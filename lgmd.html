@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Limb-Girdle Muscular Dystrophy (LGMD) | MDP</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #f8fafc; color: #333333; line-height: 1.6; }
+        .container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+        
+        header { background: #ffffff; box-shadow: 0 2px 10px rgba(0,0,0,0.05); padding: 15px 20px; position: sticky; top: 0; z-index: 1000; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; }
+        .logo-text { font-size: 16px; font-weight: bold; color: #004aad; text-decoration: none; }
+        
+        .intro-box { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 30px; margin-bottom: 35px; box-shadow: 0 4px 10px rgba(0,0,0,0.01); border-left: 6px solid #004aad; }
+        .intro-box h2 { color: #004aad; font-size: 22px; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+        
+        .subtypes-overview-box { background: #f1f5f9; border-radius: 12px; padding: 25px; margin-bottom: 35px; border-left: 6px solid #64748b; }
+        .subtypes-overview-box h3 { color: #334155; font-size: 18px; margin-bottom: 12px; }
+        .tag-cloud { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px; }
+        .cloud-tag { background: #ffffff; color: #475569; border: 1px solid #cbd5e1; padding: 5px 12px; border-radius: 6px; font-size: 13.5px; font-weight: 600; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+
+        .types-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; margin-top: 25px; }
+        .type-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 10px rgba(0,0,0,0.01); transition: all 0.3s ease; cursor: pointer; }
+        .type-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,74,173,0.08); border-color: #004aad; }
+        
+        .type-title { font-size: 17px; font-weight: 700; color: #004aad; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+        .click-badge { font-size: 12px; font-weight: bold; color: #004aad; margin-top: 15px; display: inline-flex; align-items: center; gap: 5px; }
+
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(4px); display: flex; justify-content: center; align-items: center; z-index: 2000; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
+        .modal-overlay.active { opacity: 1; visibility: visible; }
+        
+        .modal-box { background: #ffffff; width: 90%; max-width: 700px; border-radius: 16px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); padding: 30px; position: relative; transform: scale(0.9); transition: all 0.3s ease; max-height: 85vh; overflow-y: auto; }
+        .modal-overlay.active .modal-box { transform: scale(1); }
+        
+        .close-btn { position: absolute; top: 20px; right: 20px; background: #f1f5f9; border: none; width: 35px; height: 35px; border-radius: 50%; font-size: 16px; color: #64748b; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
+        .close-btn:hover { background: #e2e8f0; color: #0f172a; }
+        
+        .modal-header { border-bottom: 2px solid #f1f5f9; padding-bottom: 15px; margin-bottom: 20px; }
+        .modal-header h2 { font-size: 22px; color: #004aad; font-weight: 800; display: flex; align-items: center; gap: 10px; }
+        
+        .info-section { margin-bottom: 20px; }
+        .info-title { font-size: 15px; font-weight: 700; color: #475569; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
+        .info-desc { font-size: 14.5px; color: #444444; background: #f8fafc; padding: 12px; border-radius: 8px; border-left: 4px solid #004aad; }
+        
+        .subtypes-container { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 5px; background: #f1f5f9; padding: 12px; border-radius: 8px; border-left: 4px solid #64748b; }
+        .subtype-tag { background: #ffffff; color: #334155; border: 1px solid #cbd5e1; padding: 4px 10px; border-radius: 6px; font-size: 13px; font-weight: 600; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <a href="index.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+                <img src="logo.png" alt="MDP Logo" style="height: 40px; width: auto; object-fit: contain; display: block;">
+                <span class="logo-text" style="font-size: 18px;">Muscular Dystrophy Pakistan (MDP)</span>
+            </a>
+            <a href="types.html" style="text-decoration: none; color: #64748b; font-size: 14px; font-weight: 600;"><i class="fa-solid fa-arrow-left"></i> Back to Types</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <div style="text-align: center; margin-bottom: 35px;">
+            <h1 style="color: #004aad; font-size: 32px; font-weight: 800;">Limb-Girdle Muscular Dystrophy (LGMD)</h1>
+            <p style="color: #555555; max-width: 700px; margin: 10px auto 0 auto;">A comprehensive deep dive into the complex sub-types, classifications, and latest care practices.</p>
+        </div>
+
+        <!-- What is LGMD Info Box -->
+        <div class="intro-box">
+            <h2><i class="fa-solid fa-circle-info"></i> What is LGMD?</h2>
+            <p style="color: #444444; font-size: 15.5px; margin-bottom: 12px;">Limb-Girdle Muscular Dystrophy is not a single disease, but a large family of different genetic muscle disorders. It primary targets and weakens the voluntary muscles around the shoulders and the hips (pelvic girdle area).</p>
+            <p style="color: #444444; font-size: 15.5px;">Because the pelvic and shoulder muscles weaken over time, patients usually face difficulty standing up from chairs, climbing stairs, or lifting their arms to brush hair and carry objects. It can start at any age, depending heavily on the specific sub-type inherited.</p>
+        </div>
+
+        <!-- All Types Family Map Box -->
+        <div class="subtypes-overview-box">
+            <h3><i class="fa-solid fa-layer-group"></i> Complete LGMD Family Map (All Known Sub-types)</h3>
+            <p style="color: #555555; font-size: 14.5px;">LGMD is divided into two main scientific groups based on how it is passed down through families: <strong>LGMD1 (Dominant Type)</strong> and <strong>LGMD2 / LGMD R (Recessive Type)</strong>.</p>
+            <div class="tag-cloud">
+                <span class="cloud-tag" style="border-color: #004aad; color: #004aad; font-weight: bold;">LGMD1 (Dominant Group)</span>
+                <span class="cloud-tag">LGMD 1A</span> <span class="cloud-tag">LGMD 1B</span> <span class="cloud-tag">LGMD 1C</span> <span class="cloud-tag">LGMD 1D</span> <span class="cloud-tag">LGMD 1E</span> <span class="cloud-tag">LGMD 1F</span> <span class="cloud-tag">LGMD 1G</span>
+                <span class="cloud-tag" style="border-color: #004aad; color: #004aad; font-weight: bold; margin-left: 5px;">LGMD2 / R (Recessive Group)</span>
+                <span class="cloud-tag">LGMD R1 (Calpain-3)</span> <span class="cloud-tag">LGMD R2 (Dysferlin)</span> <span class="cloud-tag">LGMD R3 (Sarcoglycan α)</span> <span class="cloud-tag">LGMD R4 (Sarcoglycan β)</span> <span class="cloud-tag">LGMD R5 (Sarcoglycan γ)</span> <span class="cloud-tag">LGMD R6 (Sarcoglycan δ)</span> <span class="cloud-tag">LGMD R9 (FKRP-related)</span>
+            </div>
+        </div>
+
+        <!-- Cards Grid Area -->
+        <div style="margin-top: 40px;">
+            <h2 style="color: #334155; font-size: 20px; font-weight: 700;"><i class="fa-solid fa-sliders" style="color: #004aad;"></i> Explore Main LGMD Classifications</h2>
+            <p style="color: #666666; font-size: 14.5px;">Click on any main classification block below to view its diagnosis blueprint, specific care setup, and latest treatments.</p>
+        </div>
+
+        <div class="types-grid">
+            <div class="type-card" style="border-left: 5px solid #004aad;" onclick="openModal('lgmd1')">
+                <div>
+                    <div class="type-title"><i class="fa-solid fa-dna"></i> Autosomal Dominant (LGMD1)</div>
+                    <p style="color: #555555; font-size: 14px;">Less common family types. Only one copy of the broken gene from one parent is enough to pass down the disease.</p>
+                </div>
+                <div class="click-badge">Click for Details <i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+            </div>
+
+            <div class="type-card" style="border-left: 5px solid #004aad;" onclick="openModal('lgmd2')">
+                <div>
+                    <div class="type-title"><i class="fa-solid fa-code-merge"></i> Autosomal Recessive (LGMD2 / R)</div>
+                    <p style="color: #555555; font-size: 14px;">More common family types. Requires two faulty copies of the gene (one from each parent) to manifest.</p>
+                </div>
+                <div class="click-badge">Click for Details <i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+            </div>
+
+            <div class="type-card" style="border-left: 5px solid #004aad;" onclick="openModal('dysferlin')">
+                <div>
+                    <div class="type-title"><i class="fa-solid fa-shield-halved"></i> Dysferlin-Related (LGMD R2)</div>
+                    <p style="color: #555555; font-size: 14px;">Commonly targets young adults, causing high difficulty in walking due to lack of cell membrane repair proteins.</p>
+                </div>
+                <div class="click-badge">Click for Details <i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+            </div>
+
+            <div class="type-card" style="border-left: 5px solid #004aad;" onclick="openModal('sarcoglycan')">
+                <div>
+                    <div class="type-title"><i class="fa-solid fa-cubes"></i> Sarcoglycan Types (LGMD R3-R6)</div>
+                    <p style="color: #555555; font-size: 14px;">Severe childhood-onset sub-types that can sometimes mimic the fast progression look of DMD or BMD.</p>
+                </div>
+                <div class="click-badge">Click for Details <i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+            </div>
+        </div>
+
+        <!-- NEWLY ADDED: Critical Medical Highlights Box (Perfect Alignment) -->
+        <div class="intro-box" style="border-left-color: #dc2626; margin-top: 40px; background: #fffdfd;">
+            <h2 style="color: #dc2626;"><i class="fa-solid fa-triangle-exclamation"></i> Critical Care Highlights</h2>
+            <p style="color: #444444; font-size: 15px; margin-bottom: 10px;"><strong>The Power of Genetic Testing:</strong> Because LGMD has dozens of unique sub-types that look identical from the outside, a multi-gene NGS (Next-Generation Sequencing) DNA panel test is highly recommended to pinpoint the exact broken gene before starting any management path.</p>
+            <p style="color: #444444; font-size: 15px;"><strong>Heart & Respiratory Tracking:</strong> Certain variants of LGMD can silently affect the cardiac (heart) rhythms or weaken the diaphragm (breathing muscles). Annual echo-cardiograms and forced vital capacity (FVC) breathing tests are vital to prevent sudden complications.</p>
+        </div>
+    </div>
+    <!-- POPUP MODAL OVERLAY -->
+    <div class="modal-overlay" id="detailModal" onclick="closeModal(event)">
+        <div class="modal-box" onclick="event.stopPropagation()">
+            <button class="close-btn" onclick="closeModal(null)"><i class="fa-solid fa-xmark"></i></button>
+            <div class="modal-header">
+                <h2 id="modalTitle">Classification Name</h2>
+            </div>
+            
+            <div class="info-section">
+                <div class="info-title"><i class="fa-solid fa-network-wired" style="color: #64748b;"></i> Specific Class Sub-Types</div>
+                <div class="subtypes-container" id="modalSubtypes">
+                    <!-- Tags will load dynamically -->
+                </div>
+            </div>
+
+            <div class="info-section">
+                <div class="info-title"><i class="fa-solid fa-microscope" style="color: #004aad;"></i> Specialized Diagnosis</div>
+                <p class="info-desc" id="modalDiag">Diagnosis layout goes here.</p>
+            </div>
+
+            <div class="info-section">
+                <div class="info-title"><i class="fa-solid fa-hand-holding-medical" style="color: #475569;"></i> Standard Care Management</div>
+                <p class="info-desc" id="modalCare" style="border-left-color: #475569;">Care steps go here.</p>
+            </div>
+
+            <div class="info-section">
+                <div class="info-title"><i class="fa-solid fa-atom" style="color: #004aad;"></i> Latest Advanced World Treatments</div>
+                <p class="info-desc" id="modalAdvanced" style="border-left-color: #004aad; background: #fbfdff;">Advanced treatment info goes here.</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        const lgmdData = {
+            lgmd1: {
+                title: "Autosomal Dominant LGMD (Group 1)",
+                subtypes: ["LGMD 1A", "LGMD 1B", "LGMD 1C", "LGMD 1D", "LGMD 1E"],
+                diag: "Symptoms typically begin in late childhood or adulthood and progress very slowly. Doctors track family trees and use comprehensive multi-gene NGS (Next Generation Sequencing) blood tests to identify the dominant gene mutation.",
+                care: "Physical therapy and continuous mild stretching keep pelvic joints active. Occupational therapists assist in prescribing smart household tools to reduce strain while reaching up or standing.",
+                advanced: "Scientists are exploring advanced gene-silencing techniques (like siRNA and antisense tools) to safely block the single dominant faulty gene from creating toxic proteins."
+            },
+            lgmd2: {
+                title: "Autosomal Recessive LGMD (Group 2 / R)",
+                subtypes: ["LGMD R1 (Calpain-3)", "LGMD R9 (FKRP)", "Recessive Sub-types A-Z"],
+                diag: "This is the most common form of LGMD. It often shows up in teenage or early adult years, causing weakness when running or standing up. Diagnosis is done via modern panel DNA tests and muscle protein biopsies.",
+                care: "Regular low-impact aquatic (water) therapy protects muscles from loading damage. Mobility equipment like power wheelchairs or lightweight scooters are used as the condition changes over time.",
+                advanced: "International labs are running clinical trials utilizing safe virus vectors (AAV) to deliver healthy replacement genes directly into the core skeletal muscle cells."
+            },
+            dysferlin: {
+                title: "Dysferlin-Related LGMD (LGMD R2 / Miyoshi)",
+                subtypes: ["LGMD R2", "Miyoshi Myopathy Variant"],
+                diag: "Often starts in young adults (ages 15 to 30). The initial symptom is usually severe difficulty standing up on tiptoes or climbing stairs. Confirmed via a Dysferlin protein blood panel or muscle test.",
+                care: "Avoid heavy weight-lifting exercises as they can break down vulnerable fibers. Daily use of stable flat-foot orthotics and focused physical therapy helps maintain stable balance while walking.",
+                advanced: "Advanced dual-vector gene replacement therapies are being tested worldwide to bypass the large size of the dysferlin gene and deliver healthy repair instructions."
+            },
+            sarcoglycan: {
+                title: "Sarcoglycan-Related LGMD (LGMD R3 - R6)",
+                subtypes: ["LGMD R3 (Alpha)", "LGMD R4 (Beta)", "LGMD R5 (Gamma)", "LGMD R6 (Delta)"],
+                diag: "Symptoms appear early in childhood (often between 3 to 8 years old). It causes fast-moving muscle weakness that looks very similar to DMD. Elevated blood CPK levels are found during initial doctor checkups.",
+                care: "Close tracking of heart and breathing systems is critical. Use of nighttime breathing supports (BiPAP) and lightweight supportive leg braces keep kids moving safely and comfortably.",
+                advanced: "Targeted corrective gene therapies (like SRP-9003) are inside advanced global testing phases, showing promising results in restoring the missing sarcoglycan protein layers."
+            }
+        };
+
+        function openModal(type) {
+            const data = lgmdData[type];
+            if (!data) return;
+
+            document.getElementById('modalTitle').innerText = data.title;
+            document.getElementById('modalDiag').innerText = data.diag;
+            document.getElementById('modalCare').innerText = data.care;
+            document.getElementById('modalAdvanced').innerText = data.advanced;
+
+            const subContainer = document.getElementById('modalSubtypes');
+            subContainer.innerHTML = ''; 
+            data.subtypes.forEach(name => {
+                const span = document.createElement('span');
+                span.className = 'subtype-tag';
+                span.innerText = name;
+                subContainer.appendChild(span);
+            });
+
+            document.getElementById('detailModal').classList.add('active');
+            document.body.style.overflow = 'hidden'; 
+        }
+
+        function closeModal(event) {
+            if (event) event.stopPropagation();
+            document.getElementById('detailModal').classList.remove('active');
+            document.body.style.overflow = ''; 
+        }
+    </script>
+</body>
+</html>

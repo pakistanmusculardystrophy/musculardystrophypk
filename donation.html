@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Donation Portal - MDP Pakistan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #2A7DE1;
+            --primary-dark: #1A5CB8;
+            --bg-white: #FFFFFF;
+            --light-blue: #E8F1FC;
+            --text-dark: #333333;
+            --btn-green: #28A745;
+            --accent-red: #D32F2F;
+        }
+        body { font-family: 'Poppins', sans-serif; margin: 0; padding: 0; background-color: #f4f7fa; color: var(--text-dark); }
+        header { background-color: var(--bg-white); border-bottom: 4px solid var(--primary-blue); padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .logo-area { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .logo-img { width: 60px; height: 60px; object-fit: contain; }
+        .brand-name h1 { margin: 0; font-size: 1.2rem; color: var(--primary-blue); font-weight: 700; }
+        .btn-back { text-decoration: none; color: var(--primary-blue); font-weight: 600; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; }
+        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+        .donation-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .donation-info-card { background: #fff; border: 1px solid #e1e8ed; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .bank-details-table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 0.95rem; }
+        .bank-details-table th, .bank-details-table td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        .bank-details-table th { background-color: var(--light-blue); color: var(--primary-dark); }
+        .amt-btn { padding: 10px; border: 1px solid #ddd; background: white; border-radius: 4px; font-weight: 600; cursor: pointer; transition: 0.2s; }
+        .donation-banner-img { width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-top: 20px; }
+        footer { text-align: center; padding: 30px 20px; color: #666; font-size: 0.9rem; margin-top: 60px; border-top: 1px solid #ddd; }
+        /* --- Desktop View Content Width Fix --- */
+.container { 
+    width: 100% !important; 
+    max-width: 1350px !important; /* Puraane 800px-1100px se badha kar full modern screen size kar diya */
+    margin: 0 auto !important; 
+    padding: 40px 30px !important; 
+    box-sizing: border-box !important;
+}
+
+/* Header ki navigation aur elements ko bhi corner-to-corner wide karne ke liye */
+.nav-container {
+    max-width: 1350px !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+}
+
+/* Footer layout ko bhi full width par align karne ke liye */
+.footer-container, footer .container {
+    max-width: 1350px !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+}
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo-area">
+            <img class="logo-img" src="logo.png" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=100&q=80';" alt="MDP">
+            <div class="brand-name">
+                <h1>MDP Pakistan</h1>
+            </div>
+        </a>
+        <a href="index.html" class="btn-back"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+    </header>
+<!-- Main Wrapper Jo Dono Cards Ko Barabar Rakhega -->
+<div class="donation-page-wrapper" style="display: flex; flex-wrap: wrap; gap: 20px; max-width: 1200px; margin: 40px auto; padding: 0 15px; align-items: stretch;">
+    
+    <!-- LEFT SIDE: Bank Accounts Card (Height automated stretch ho gi) -->
+    <div class="bank-accounts-card" style="flex: 1; min-width: 320px; background: #ffffff; padding: 25px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+            <h3 style="color: #004aad; font-weight: 700; margin-bottom: 15px;"><i class="fa-solid fa-building-columns"></i> Official Bank Accounts</h3>
+            <p style="font-size: 13px; color: #64748b; margin-bottom: 20px;">You can transfer your donations directly via online banking or local mobile wallets.</p>
+            
+            <!-- Aapka Bank Details Table Yahan Aaye Ga -->
+            <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+                <!-- Jo table code pehle se tha aapka wohi yahan chalega -->
+                <tr style="border-bottom: 1px solid #f1f5f9;"><td style="padding: 10px 0; font-weight: 600;">Bank Title:</td><td style="padding: 10px 0; color: #334155;">Habib Metropolitan Bank Limited</td></tr>
+                <tr style="border-bottom: 1px solid #f1f5f9;"><td style="padding: 10px 0; font-weight: 600;">Account Name:</td><td style="padding: 10px 0; color: #334155;">Muscular Dystrophy Pakistan</td></tr>
+                <tr style="border-bottom: 1px solid #f1f5f9;"><td style="padding: 10px 0; font-weight: 600;">Account Number:</td><td style="padding: 10px 0; color: #334155;">PK46 MPBL 0184067140141180
+
+</td></tr>
+            </table>
+        </div>
+
+        <!-- Image at the bottom of bank card -->
+        <div style="margin-top: 20px; border-radius: 8px; overflow: hidden;">
+            <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=600" alt="Children" style="width: 100%; height: auto; display: block; object-fit: cover;">
+        </div>
+    </div>
+
+    <!-- RIGHT SIDE: New Manual Donation Verification Form -->
+    <div class="donation-form-container" style="flex: 1; min-width: 320px; background: #ffffff; padding: 25px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+            <h3 style="color: #004aad; text-align: center; margin-bottom: 10px; font-weight: 700;">SUBMIT DONATION PROOF</h3>
+            <p style="font-size: 13px; color: #64748b; text-align: center; margin-bottom: 20px; line-height: 1.5;">
+                Apni banking app se transfer karne ke baad, details aur screenshot yahan submit karein taake hum verify kar sakein.
+            </p>
+
+<form id="donationProofForm" onsubmit="submitDonationData(event)">
+    <div style="margin-bottom: 12px;">
+        <label style="display:block; margin-bottom:4px; font-weight:600; font-size:13px; color:#334155;">Sent Amount (Rs.) *</label>
+        <input type="number" id="donAmount" name="Amount" placeholder="e.g. 5000" required style="width:100%; padding:10px; border:1px solid #cbd5e1; border-radius:6px; font-size:14px; box-sizing: border-box;">
+    </div>
+
+    <div style="display: flex; gap: 10px; margin-bottom: 12px;">
+        <div style="flex: 1;">
+            <label style="display:block; margin-bottom:4px; font-weight:600; font-size:13px; color:#334155;">First Name *</label>
+            <input type="text" id="donFirstName" name="First_Name" required style="width:100%; padding:10px; border:1px solid #cbd5e1; border-radius:6px; font-size:14px; box-sizing: border-box;">
+        </div>
+        <div style="flex: 1;">
+            <label style="display:block; margin-bottom:4px; font-weight:600; font-size:13px; color:#334155;">Last Name</label>
+            <input type="text" id="donLastName" name="Last_Name" style="width:100%; padding:10px; border:1px solid #cbd5e1; border-radius:6px; font-size:14px; box-sizing: border-box;">
+        </div>
+    </div>
+
+    <div style="margin-bottom: 12px;">
+        <label style="display:block; margin-bottom:4px; font-weight:600; font-size:13px; color:#334155;">Email Address *</label>
+        <input type="email" id="donEmail" name="Email" required style="width:100%; padding:10px; border:1px solid #cbd5e1; border-radius:6px; font-size:14px; box-sizing: border-box;">
+    </div>
+
+    <div style="margin-bottom: 12px;">
+        <label style="display:block; margin-bottom:4px; font-weight:600; font-size:13px; color:#334155;">WhatsApp / Phone No. *</label>
+        <input type="tel" id="donPhone" name="Phone_Number" placeholder="e.g. 03001234567" required style="width:100%; padding:10px; border:1px solid #cbd5e1; border-radius:6px; font-size:14px; box-sizing: border-box;">
+    </div>
+
+    <div style="margin-bottom: 20px;">
+        <label style="display:block; margin-bottom:4px; font-weight:600; font-size:13px; color:#334155;">Upload Transfer Screenshot *</label>
+        <input type="file" id="donScreenshot" name="Receipt_Screenshot" accept="image/*" required style="width:100%; padding:8px; border:1px solid #cbd5e1; border-radius:6px; background:#f8fafc; font-size:13px; color:#475569; width:100%; box-sizing: border-box;">
+    </div>
+
+    <button type="submit" id="donSubmitBtn" style="width:100%; padding:12px; background:#22c55e; color:white; border:none; border-radius:6px; font-weight:bold; cursor:pointer; font-size:15px; transition: 0.2s ease;" onmouseover="this.style.background='#16a34a'" onmouseout="this.style.background='#22c55e'">
+        SUBMIT PROOF
+    </button>
+</form>
+        </div>
+    </div>
+</div>
+
+
+
+    <footer>
+        <p>&copy; 2026 Muscular Dystrophy Pakistan. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function setFrequency(type) {
+            let oneTimeBtn = document.getElementById('btn-one-time');
+            let monthlyBtn = document.getElementById('btn-monthly');
+            if(type === 'one-time') {
+                oneTimeBtn.style.background = 'var(--primary-blue)'; oneTimeBtn.style.color = 'white';
+                monthlyBtn.style.background = 'white'; monthlyBtn.style.color = '#333';
+            } else {
+                monthlyBtn.style.background = 'var(--primary-blue)'; monthlyBtn.style.color = 'white';
+                oneTimeBtn.style.background = 'white'; oneTimeBtn.style.color = '#333';
+            }
+        }
+        function setAmount(val) {
+            document.getElementById('donation-amount').value = val;
+            document.getElementById('total-display').innerText = val.toLocaleString();
+        }
+        function clearAmountFocus() { document.getElementById('donation-amount').focus(); }
+        document.getElementById('donation-amount').addEventListener('input', function(e) {
+            let currentVal = parseInt(e.target.value) || 0;
+            document.getElementById('total-display').innerText = currentVal.toLocaleString();
+        });
+    </script>
+    <script>
+    // ... aapka purana menu aur gallery swipe wala code pehle se yahan mojud hai ...
+    // ... uske bilkul niche yeh naya code mazeed add kar dein ...
+
+    // --- MANUAL DONATION PROOF SUBMISSION ---
+    function submitDonationData(event) {
+        event.preventDefault();
+        
+        const btn = document.getElementById('donSubmitBtn');
+        btn.innerText = "Submitting... Please wait...";
+        btn.disabled = true;
+
+        const fileInput = document.getElementById('donScreenshot');
+        const file = fileInput.files[0];
+        
+        // Google Apps Script Web App URL (Jo aap deployment ke baad yahan paste karenge)
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxutKmfN4-cWue_PKKVmUR1xnxsXILmjdy1W1_63zKy7vPhBh9L3FC5xO6stIeFZCmK/exec";
+
+        if (!file) {
+            alert("Please upload the transaction screenshot.");
+            btn.innerText = "SUBMIT PROOF";
+            btn.disabled = false;
+            return;
+        }
+
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function () {
+            const rawLog = reader.result.split(',')[1]; // Base64 string extraction
+            
+            const data = {
+                amount: document.getElementById('donAmount').value,
+                firstName: document.getElementById('donFirstName').value,
+                lastName: document.getElementById('donLastName').value,
+                email: document.getElementById('donEmail').value,
+                phone: document.getElementById('donPhone').value,
+                screenshotData: rawLog,
+                screenshotName: file.name,
+                screenshotType: file.type
+            };
+
+            fetch(GOOGLE_SCRIPT_URL, {
+                method: "POST",
+                body: JSON.stringify(data)
+            })
+            .then(res => res.json())
+            .then(response => {
+                if(response.result === "success") {
+                    document.getElementById('donationProofForm').reset();
+                } else {
+                    alert("Error: " + response.error);
+                }
+            })
+            .catch(err => {
+                console.error(err);
+                alert("Something went wrong. Please try again.");
+            })
+            .finally(() => {
+                btn.innerText = "SUBMIT PROOF";
+                btn.disabled = false;
+            });
+        };
+    }
+</script>
+<div id="successModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 9999; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease;">
+    <div style="background: #ffffff; padding: 30px; border-radius: 16px; max-width: 380px; width: 90%; text-align: center; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); transform: scale(0.8); transition: transform 0.3s ease;" id="successModalCard">
+        
+        <div style="width: 70px; height: 70px; background: #dcfce7; color: #22c55e; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin: 0 auto 20px; font-size: 32px; font-weight: bold;">
+            ✓
+        </div>
+        
+        <h3 style="color: #1e293b; font-size: 22px; font-weight: 700; margin-bottom: 10px;">Thank You!</h3>
+        
+        <p style="color: #64748b; font-size: 14px; line-height: 1.6; margin-bottom: 25px;">
+            Donation proof submitted successfully! We will verify it soon.
+        </p>
+        
+        <button type="button" onclick="closeSuccessModal()" style="width: 100%; padding: 12px; background: #22c55e; color: white; border: none; border-radius: 8px; font-weight: bold; font-size: 15px; cursor: pointer; transition: background 0.2s;" onmouseover="this.style.background='#16a34a'" onmouseout="this.style.background='#22c55e'">
+            Okay
+        </button>
+    </div>
+</div>
+
+<script>
+// 1. POPUP OPEN KARNE KA FUNCTION
+function openSuccessModal() {
+    const modal = document.getElementById('successModal');
+    const card = document.getElementById('successModalCard');
+    if (modal && card) {
+        modal.style.display = 'flex';
+        setTimeout(() => {
+            modal.style.opacity = '1';
+            card.style.transform = 'scale(1)';
+        }, 50);
+    } else {
+        alert("Popup HTML code missing! Please ensure successModal div is added.");
+    }
+}
+
+// 2. POPUP CLOSE KARNE KA FUNCTION
+function closeSuccessModal() {
+    const modal = document.getElementById('successModal');
+    const card = document.getElementById('successModalCard');
+    if (modal && card) {
+        modal.style.opacity = '0';
+        card.style.transform = 'scale(0.8)';
+        setTimeout(() => {
+            modal.style.display = 'none';
+        }, 300);
+    }
+}
+
+// 3. FORM SUBMIT KARNE KA MAIN FUNCTION
+function submitDonationData(event) {
+    event.preventDefault();
+    
+    const btn = document.getElementById('donSubmitBtn');
+    btn.innerText = "Submitting... Please wait...";
+    btn.disabled = true;
+
+    const fileInput = document.getElementById('donScreenshot');
+    const file = fileInput.files[0];
+    
+    // ⚠️ YAHA APNA GOOGLE SCRIPT DEPLOYMENT WEB APP URL LINK DALEIN
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzSu-olimLjjpLa2gXDkIkIq0lFePU3JNqsHqTZThD6UBIITFlNM5LdZEtO5icUUhg1/exec"; 
+
+    if (!file) {
+        alert("Please upload the transaction screenshot.");
+        btn.innerText = "SUBMIT PROOF";
+        btn.disabled = false;
+        return;
+    }
+
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function () {
+        const rawLog = reader.result.split(',')[1];
+        
+        const data = {
+            amount: document.getElementById('donAmount').value,
+            firstName: document.getElementById('donFirstName').value,
+            lastName: document.getElementById('donLastName').value,
+            email: document.getElementById('donEmail').value,
+            phone: document.getElementById('donPhone').value,
+            screenshotData: rawLog,
+            screenshotName: file.name,
+            screenshotType: file.type
+        };
+
+        fetch(GOOGLE_SCRIPT_URL, {
+            method: "POST",
+            body: JSON.stringify(data)
+        })
+        .then(res => res.json())
+        .then(response => {
+            if (response.result === "success") {
+                // Yahan se popup call hota hai
+                openSuccessModal(); 
+                document.getElementById('donationProofForm').reset();
+            } else {
+                alert("Error from script: " + response.error);
+            }
+        })
+        .catch(err => {
+            console.error(err);
+            alert("Network connection error. Please try again.");
+        })
+        .finally(() => {
+            btn.innerText = "SUBMIT PROOF";
+            btn.disabled = false;
+        });
+    };
+}
+</script>
+</body>
+</html>

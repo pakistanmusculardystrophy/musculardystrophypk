@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Gallery | Muscular Dystrophy Pakistan (MDP)</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: #f1f5f9; color: #1e293b; line-height: 1.6; }
+        
+        /* Desktop View ko center se hata kar Full Screen wide karne ke liye width badha di hai */
+        .container { width: 100%; max-width: 95%; margin: 0 auto; padding: 40px 10px; }
+
+        /* --- GLOBAL HEADER & LOGO CSS --- */
+        header { background: #ffffff; box-shadow: 0 2px 15px rgba(0, 0, 0, 0.04); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #e2e8f0; width: 100%; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 12px 30px; }
+        
+        .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .logo-wrapper { display: flex; align-items: center; justify-content: center; height: 42px; width: 42px; overflow: hidden; }
+        .main-logo { height: 100%; width: 100%; object-fit: contain; }
+        .brand-text { font-size: 18px; font-weight: 700; color: #004aad; white-space: nowrap; }
+
+        .desktop-nav { display: flex; align-items: center; gap: 15px; }
+        .desktop-nav a { text-decoration: none; color: #475569; font-weight: 600; font-size: 0.85rem; transition: color 0.2s; }
+        .desktop-nav a:hover, .desktop-nav a.active { color: #004aad; }
+        .menu-trigger-btn { background: none; border: none; font-size: 1.4rem; color: #004aad; cursor: pointer; padding: 5px; display: none; }
+        
+        @media (max-width: 1024px) { 
+            .desktop-nav a { display: none; } 
+            .menu-trigger-btn { display: inline-block; } 
+            .nav-container { padding: 12px 20px; } 
+        }
+
+        /* Mobile Drawer Style */
+        #side-drawer { position: fixed; top: 0; right: -300px; width: 290px; height: 100vh; background: #ffffff; z-index: 9999; transition: 0.3s ease-in-out; padding: 30px 25px; display: none; overflow-y: auto; box-shadow: -4px 0 20px rgba(0,0,0,0.08); }
+        .drawer-close-btn { display: flex; justify-content: flex-end; width: 100%; margin-bottom: 10px; }
+        .drawer-close-btn button { border: none; background: none; font-size: 1.6rem; cursor: pointer; color: #475569; }
+        .drawer-links { display: flex; flex-direction: column; gap: 22px; margin-top: 10px; }
+        .drawer-links a { text-decoration: none; color: #334155; font-weight: 500; font-size: 1.05rem; display: flex; align-items: center; gap: 14px; transition: color 0.2s; }
+        .drawer-links a i { font-size: 1.15rem; width: 24px; color: #475569; }
+        .drawer-links a:hover, .drawer-links a.active { color: #004aad; }
+        .accessibility-dropdown { margin-top: 30px; border-top: 1px solid #f1f5f9; padding-top: 25px; }
+        .acc-trigger { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 12px 15px; border: 1px solid #e2e8f0; background: #f8fafc; border-radius: 8px; font-weight: 500; color: #475569; cursor: pointer; font-size: 0.95rem; }
+        .acc-panel { display: none; padding: 12px 5px; flex-direction: column; gap: 10px; }
+        .acc-panel button { width: 100%; padding: 10px; border: 1px solid #cbd5e1; background: #ffffff; border-radius: 6px; cursor: pointer; font-weight: 600; color: #0f172a; text-align: left; font-size: 0.85rem; }
+        .drawer-socials { display: flex; justify-content: center; gap: 20px; margin-top: 40px; padding-bottom: 20px; }
+        .drawer-socials a { color: #64748b; font-size: 1.3rem; transition: color 0.2s; }
+        .drawer-socials a:hover { color: #004aad; }
+
+        /* --- GALLERY STYLES --- */
+        .gallery-header { text-align: center; margin-bottom: 35px; }
+        .gallery-header h2 { font-size: 2.2rem; color: #0f172a; font-weight: 800; margin-bottom: 10px; }
+        .gallery-header p { color: #64748b; font-size: 1.05rem; max-width: 600px; margin: 0 auto; }
+
+        .gallery-filters { display: flex; justify-content: center; gap: 10px; margin-bottom: 40px; flex-wrap: wrap; }
+        .filter-btn { background: #ffffff; border: 1px solid #e2e8f0; padding: 8px 18px; border-radius: 30px; font-weight: 600; color: #475569; cursor: pointer; transition: all 0.2s ease; font-size: 0.9rem; }
+        .filter-btn:hover, .filter-btn.active { background: #f59e0b; color: #ffffff; border-color: #f59e0b; box-shadow: 0 4px 12px rgba(245, 158, 11, 0.2); }
+
+        /* Responsive grid item sizes adjusted for desktop full width */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; width: 100%; }
+        .gallery-item { background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); cursor: pointer; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease; display: block; }
+        .gallery-item:hover { transform: translateY(-6px); box-shadow: 0 12px 20px -5px rgba(0,0,0,0.1); }
+        
+        .img-box { width: 100%; height: 200px; overflow: hidden; background: #e2e8f0; position: relative; }
+        .img-box img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .gallery-item:hover .img-box img { transform: scale(1.06); }
+        
+        .item-info { padding: 15px 20px; border-top: 1px solid #f1f5f9; }
+        .item-info span { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: #f59e0b; letter-spacing: 0.5px; }
+        .item-info h3 { font-size: 1.05rem; color: #1e293b; margin-top: 4px; font-weight: 700; }
+
+        .lightbox-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.9); z-index: 99999; display: none; justify-content: center; align-items: center; padding: 20px; opacity: 0; transition: opacity 0.3s ease; }
+        .lightbox-overlay.active { display: flex; opacity: 1; }
+        .lightbox-content { max-width: 850px; max-height: 85vh; width: 100%; position: relative; display: flex; flex-direction: column; align-items: center; }
+        .lightbox-content img { max-width: 100%; max-height: 75vh; object-fit: contain; border-radius: 6px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); }
+        .lightbox-caption { color: #ffffff; margin-top: 15px; font-size: 1.1rem; font-weight: 600; text-align: center; }
+        .lightbox-close { position: absolute; top: -45px; right: 0; background: none; border: none; color: #ffffff; font-size: 2rem; cursor: pointer; transition: color 0.2s; }
+        .lightbox-close:hover { color: #f59e0b; }
+
+        body.high-contrast { background-color: #000000 !important; color: #ffffff !important; }
+        body.high-contrast header, body.high-contrast #side-drawer { background: #121212 !important; color: #ffffff !important; border-color: #ffffff !important; }
+        body.high-contrast a, body.high-contrast .brand-text { color: #ffff00 !important; }
+        body.high-contrast .filter-btn { background: #000; color: #fff; border-color: #fff; }
+        body.high-contrast .filter-btn.active { background: #ffff00; color: #000; }
+        body.high-contrast .gallery-item { background: #121212; border: 1px solid #fff; }
+        body.high-contrast .item-info h3 { color: #fff; }
+        body.large-text { font-size: 19px !important; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="brand">
+                <div class="logo-wrapper">
+                    <img src="logo.png" alt="MDP Logo" class="main-logo">
+                </div>
+                <span class="brand-text">MDP Pakistan</span>
+            </a>
+            <nav class="desktop-nav">
+                <a href="index.html">Home</a>
+                <a href="projects.html">Our Projects</a>
+                <a href="news.html">News & Updates</a>
+                <a href="about.html">About Us</a>
+    <a href="types.html">Classifications</a>
+                <a href="registration.html">Registry Dashboard</a>
+                <a href="donation.html" style="color: #2A7DE1; font-weight: 700;">Donate</a>
+                <a href="volunteer.html">Volunteer</a>
+                <a href="gallery.html" class="active">Gallery</a>
+                <a href="contact.html">Contact</a>
+                <button class="menu-trigger-btn" onclick="toggleSideMenu()"><i class="fa-solid fa-bars"></i></button>
+            </nav>
+        </div>
+    </header>
+
+    <div id="side-drawer">
+        <div class="drawer-close-btn">
+            <button onclick="toggleSideMenu()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="drawer-links">
+            <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+            <a href="about.html"><i class="fa-solid fa-circle-info"></i> about us</a>
+            <a href="types.html#classifications"><i class="fa-solid fa-hourglass-half"></i> Classifications</a>
+            <a href="registration.html"><i class="fa-solid fa-database"></i> Registry Dashboard</a>
+            <a href="projects.html"><i class="fa-solid fa-folder"></i> our projects</a>
+            <a href="news.html"><i class="fa-solid fa-newspaper"></i> News & Updates</a>
+            <a href="donation.html" class="donate-link"><i class="fa-solid fa-heart"></i> Donate Now</a>
+            <a href="volunteer.html"><i class="fa-solid fa-handshake"></i> Volunteer</a>
+            <a href="gallery.html" class="active"><i class="fa-solid fa-image"></i> Gallery</a>
+            <a href="contact.html"><i class="fa-solid fa-envelope"></i> Contact Us</a>
+        </div>
+        <div class="accessibility-dropdown">
+            <div class="acc-trigger" onclick="toggleSettingsDropdown()">
+                <span><i class="fa-solid fa-sliders" style="margin-right: 8px;"></i> Accessibility Settings</span>
+                <i id="settings-chevron" class="fa-solid fa-chevron-down" style="transition: 0.2s;"></i>
+            </div>
+            <div id="settings-panel" class="acc-panel">
+                <button onclick="toggleContrast()"><i class="fa-solid fa-circle-half-stroke"></i> High Contrast Toggle</button>
+                <button onclick="maximizeFont()"><i class="fa-solid fa-text-height"></i> Maximize Font Size</button>
+            </div>
+        </div>
+        <div class="drawer-socials">
+            <a href="https://www.facebook.com/share/18mSGQ3L6U/"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://www.instagram.com/musculardystrophypakistan"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/ghulam-ali-9b2a74101"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://x.com/muscular_p121"><i class="fa-brands fa-twitter"></i></a>
+        </div>
+    </div>
+        <!-- Photos Grid Block -->
+
+    <div class="container">
+        
+        <div class="gallery-header">
+            <h2>View Our Gallery</h2>
+            <p>See the impact we've made, event highlights, and our community in action.</p>
+        </div>
+
+        <div class="gallery-filters">
+            <button class="filter-btn active" onclick="filterGallery('all')">All Photos</button>
+            <button class="filter-btn" onclick="filterGallery('lgmd')">LGMD Awareness</button>
+            <button class="filter-btn" onclick="filterGallery('run')">Run for Rare</button>
+            <button class="filter-btn" onclick="filterGallery('field')">Field & Tools Research</button>
+        </div>
+
+        <div class="gallery-grid">
+            
+            <div class="gallery-item" data-category="lgmd" onclick="openLightbox('lgmd-pic1.jpg', 'LGMD Patient Awareness Seminar - Session 1')">
+                <div class="img-box"><img src="lgmd-pic1.jpg" alt="LGMD"></div>
+                <div class="item-info"><span>LGMD Day</span><h3>Awareness Seminar Session 1</h3></div>
+            </div>
+
+            <div class="gallery-item" data-category="lgmd" onclick="openLightbox('lgmd-pic2.jpg', 'LGMD Keynote Presentation by Experts')">
+                <div class="img-box"><img src="lgmd-pic2.jpg" alt="LGMD"></div>
+                <div class="item-info"><span>LGMD Day</span><h3>Expert Presentation</h3></div>
+            </div>
+
+            <div class="gallery-item" data-category="lgmd" onclick="openLightbox('lgmd-pic3.jpg', 'LGMD Community Engagement Drive')">
+                <div class="img-box"><img src="lgmd-pic3.jpg" alt="LGMD"></div>
+                <div class="item-info"><span>LGMD Day</span><h3>Community Engagement</h3></div>
+            </div>
+
+            <div class="gallery-item" data-category="lgmd" onclick="openLightbox('lgmd-pic4.jpg', 'LGMD Patient Interaction & Seminar Panel')">
+                <div class="img-box"><img src="lgmd-pic4.jpg" alt="LGMD"></div>
+                <div class="item-info"><span>LGMD Day</span><h3>Seminar Interaction Panel</h3></div>
+            </div>
+
+            <div class="gallery-item" data-category="lgmd" onclick="openLightbox('lgmd-pic5.jpg', 'LGMD Discussion & Resource Guide Session')">
+                <div class="img-box"><img src="lgmd-pic5.jpg" alt="LGMD"></div>
+                <div class="item-info"><span>LGMD Day</span><h3>Resource Guide Session</h3></div>
+            </div>
+
+            <div class="gallery-item" data-category="lgmd" onclick="openLightbox('lgmd-pic6.jpg', 'LGMD Medical & Clinical Consultation Meet')">
+                <div class="img-box"><img src="lgmd-pic6.jpg" alt="LGMD"></div>
+                <div class="item-info"><span>LGMD Day</span><h3>Clinical Consultation Meet</h3></div>
+            </div>
+
+            <div class="gallery-item" data-category="lgmd" onclick="openLightbox('lgmd-pic7.jpg', 'LGMD Awareness Program Concluding Session')">
+                <div class="img-box"><img src="lgmd-pic7.jpg" alt="LGMD"></div>
+                <div class="item-info"><span>LGMD Day</span><h3>Concluding Session</h3></div>
+            </div>
+
+            <div class="gallery-item" data-category="lgmd" onclick="openLightbox('lgmd-walk.jpg', 'LGMD Public Awareness Walk & Banner Display')">
+                <div class="img-box"><img src="lgmd-walk.jpg" alt="LGMD Walk"></div>
+                <div class="item-info"><span>LGMD Day</span><h3>Public Awareness Walk</h3></div>
+            </div>
+
+
+            <div class="gallery-item" data-category="run" onclick="openLightbox('run-rare-community.jpg', 'Run for Rare - Community Support Track')">
+                <div class="img-box"><img src="run-rare-community.jpg" alt="Run Rare"></div>
+                <div class="item-info"><span>Run for Rare</span><h3>Community Support Track</h3></div>
+            </div>
+
+            <div class="gallery-item" data-category="run" onclick="openLightbox('run-rare-group1.jpg', 'Run for Rare - Main Event Group Highlights')">
+                <div class="img-box"><img src="run-rare-group1.jpg" alt="Run Rare"></div>
+                <div class="item-info"><span>Run for Rare</span><h3>Event Group Highlights</h3></div>
+            </div>
+
+            <div class="gallery-item" data-category="run" onclick="openLightbox('run-rare-kids.jpg', 'Run for Rare - Inclusive Children Participation Drive')">
+                <div class="img-box"><img src="run-rare-kids.jpg" alt="Run Rare"></div>
+                <div class="item-info"><span>Run for Rare</span><h3>Children Support Drive</h3></div>
+            </div>
+
+            <div class="gallery-item" data-category="run" onclick="openLightbox('run-rare-pic1.jpg', 'Run for Rare - Youth Volunteers Track')">
+                <div class="img-box"><img src="run-rare-pic1.jpg" alt="Run Rare"></div>
+                <div class="item-info"><span>Run for Rare</span><h3>Youth Volunteers Track</h3></div>
+            </div>
+
+            <div class="gallery-item" data-category="run" onclick="openLightbox('run-rare-pic2.jpg', 'Run for Rare - Awareness Marathon Kickoff')">
+                <div class="img-box"><img src="run-rare-pic2.jpg" alt="Run Rare"></div>
+                <div class="item-info"><span>Run for Rare</span><h3>Marathon Kickoff</h3></div>
+            </div>
+
+            <div class="gallery-item" data-category="run" onclick="openLightbox('run-rare-posters.jpg', 'Run for Rare - Educational Advocacy & Posters')">
+                <div class="img-box"><img src="run-rare-posters.jpg" alt="Run Rare"></div>
+                <div class="item-info"><span>Run for Rare</span><h3>Advocacy Poster Campaign</h3></div>
+            </div>
+
+            <div class="gallery-item" data-category="run" onclick="openLightbox('run-rare-youth.jpg', 'Run for Rare - Youth Community Participation')">
+                <div class="img-box"><img src="run-rare-youth.jpg" alt="Run Rare"></div>
+                <div class="item-info"><span>Run for Rare</span><h3>Youth Group Track</h3></div>
+            </div>
+
+
+            <div class="gallery-item" data-category="field" onclick="openLightbox('mdp-field1.jpg', 'Modern Tools & Resource Distribution - Site 1')">
+                <div class="img-box"><img src="mdp-field1.jpg" alt="MDP Field"></div>
+                <div class="item-info"><span>Field Research</span><h3>Resource Deployment Site 1</h3></div>
+            </div>
+
+            <div class="gallery-item" data-category="field" onclick="openLightbox('mdp-field10.jpg', 'Patient Registration & Data Collection Mapping')">
+                <div class="img-box"><img src="mdp-field10.jpg" alt="MDP Field"></div>
+                <div class="item-info"><span>Data & Tools</span><h3>Patient Registry Mapping</h3></div>
+            </div>
+
+            <div class="gallery-item" data-category="field" onclick="openLightbox('mdp-field11.jpg', 'Field Surveys & Patient Household Coordination')">
+                <div class="img-box"><img src="mdp-field11.jpg" alt="MDP Field"></div>
+                <div class="item-info"><span>Field Research</span><h3>Household Coordination</h3></div>
+            </div>
+
+            <div class="gallery-item" data-category="field" onclick="openLightbox('mdp-field12.jpg', 'Field Operations & Demographics Data Survey')">
+                <div class="img-box"><img src="mdp-field12.jpg" alt="MDP Field"></div>
+                <div class="item-info"><span>Field Research</span><h3>Demographics Data Survey</h3></div>
+            </div>
+
+            <div class="gallery-item" data-category="field" onclick="openLightbox('mdp-field13.jpg', 'Local Community Gathering & Health Resource Mapping')">
+                <div class="img-box"><img src="mdp-field13.jpg" alt="MDP Field"></div>
+                <div class="item-info"><span>Field Operations</span><h3>Health Resource Mapping</h3></div>
+            </div>
+
+            <div class="gallery-item" data-category="field" onclick="openLightbox('mdp-field14.jpg', 'Rural Area Patient Engagement & Support Check')">
+                <div class="img-box"><img src="mdp-field14.jpg" alt="MDP Field"></div>
+                <div class="item-info"><span>Field Operations</span><h3>Rural Outreach Program</h3></div>
+            </div>
+
+            <div class="gallery-item" data-category="field" onclick="openLightbox('mdp-field15.jpg', 'Mobile Registration Drive Field Staff Coordination')">
+                <div class="img-box"><img src="mdp-field15.jpg" alt="MDP Field"></div>
+                <div class="item-info"><span>Data & Tools</span><h3>Field Staff Coordination</h3></div>
+            </div>
+
+            <div class="gallery-item" data-category="field" onclick="openLightbox('mdp-field16.jpg', 'Community Gathering for Rare Disease Infrastructure Advocacy')">
+                <div class="img-box"><img src="mdp-field16.jpg" alt="MDP Field"></div>
+                <div class="item-info"><span>Field Research</span><h3>Infrastructure Advocacy</h3></div>
+            </div>
+
+            <div class="gallery-item" data-category="field" onclick="openLightbox('mdp-field17.jpg', 'Field Verification Drive and Public Awareness Session')">
+                <div class="img-box"><img src="mdp-field17.jpg" alt="MDP Field"></div>
+                <div class="item-info"><span>Field Operations</span><h3>Verification Drive Session</h3></div>
+            </div>
+
+            <div class="gallery-item" data-category="field" onclick="openLightbox('mdp-field2.jpg', 'Field Operations & On-site Case Studies')">
+                <div class="img-box"><img src="mdp-field2.jpg" alt="MDP Field"></div>
+                <div class="item-info"><span>Field Operations</span><h3>Field Operations Case Verification</h3></div>
+            </div>
+
+            <div class="gallery-item" data-category="field" onclick="openLightbox('mdp-field3.jpg', 'Field Operations & On-site Case Studies')">
+                <div class="img-box"><img src="mdp-field3.jpg" alt="MDP Field"></div>
+                <div class="item-info"><span>Field Operations</span><h3>Field Survey & Outreach</h3></div>
+            </div>
+
+            <div class="gallery-item" data-category="field" onclick="openLightbox('mdp-field4.jpg', 'Field Operations & On-site Case Studies')">
+                <div class="img-box"><img src="mdp-field4.jpg" alt="MDP Field"></div>
+                <div class="item-info"><span>Field Operations</span><h3>Field Survey & Outreach</h3></div>
+            </div>
+
+            <div class="gallery-item" data-category="field" onclick="openLightbox('mdp-field5.jpg', 'Field Operations & On-site Case Studies')">
+                <div class="img-box"><img src="mdp-field5.jpg" alt="MDP Field"></div>
+                <div class="item-info"><span>Field Operations</span><h3>Field Survey & Outreach</h3></div>
+            </div>
+
+            <div class="gallery-item" data-category="field" onclick="openLightbox('mdp-field6.jpg', 'Field Operations & On-site Case Studies')">
+                <div class="img-box"><img src="mdp-field6.jpg" alt="MDP Field"></div>
+                <div class="item-info"><span>Field Operations</span><h3>Field Survey & Outreach</h3></div>
+            </div>
+
+            <div class="gallery-item" data-category="field" onclick="openLightbox('mdp-field7.jpg', 'Field Operations & On-site Case Studies')">
+                <div class="img-box"><img src="mdp-field7.jpg" alt="MDP Field"></div>
+                <div class="item-info"><span>Field Operations</span><h3>Field Survey & Outreach</h3></div>
+            </div>
+
+            <div class="gallery-item" data-category="field" onclick="openLightbox('mdp-field8.jpg', 'Field Operations & On-site Case Studies')">
+                <div class="img-box"><img src="mdp-field8.jpg" alt="MDP Field"></div>
+                <div class="item-info"><span>Field Operations</span><h3>Field Survey & Outreach</h3></div>
+            </div>
+
+            <div class="gallery-item" data-category="field" onclick="openLightbox('mdp-field9.jpg', 'Field Operations & On-site Case Studies')">
+                <div class="img-box"><img src="mdp-field9.jpg" alt="MDP Field"></div>
+                <div class="item-info"><span>Field Operations</span><h3>Field Survey & Outreach</h3></div>
+            </div>
+
+            <div class="gallery-item" data-category="field" onclick="openLightbox('mdp-field18.jpg', 'Field Operations & On-site Case Studies')">
+                <div class="img-box"><img src="mdp-field18.jpg" alt="MDP Field"></div>
+                <div class="item-info"><span>Field Operations</span><h3>Field Survey & Outreach</h3></div>
+            </div>
+
+            <div class="gallery-item" data-category="field" onclick="openLightbox('mdp-field19.jpg', 'Field Operations & On-site Case Studies')">
+                <div class="img-box"><img src="mdp-field19.jpg" alt="MDP Field"></div>
+                <div class="item-info"><span>Field Operations</span><h3>Field Survey & Outreach</h3></div>
+            </div>
+
+            <div class="gallery-item" data-category="field" onclick="openLightbox('mdp-field20.jpg', 'Field Operations & On-site Case Studies')">
+                <div class="img-box"><img src="mdp-field20.jpg" alt="MDP Field"></div>
+                <div class="item-info"><span>Field Operations</span><h3>Field Survey & Outreach</h3></div>
+            </div>
+
+            <div class="gallery-item" data-category="field" onclick="openLightbox('mdp-field21.jpg', 'Field Operations & On-site Case Studies')">
+                <div class="img-box"><img src="mdp-field21.jpg" alt="MDP Field"></div>
+                <div class="item-info"><span>Field Operations</span><h3>Field Survey & Outreach</h3></div>
+            </div>
+
+            <div class="gallery-item" data-category="field" onclick="openLightbox('mdp-field22 (1).jpg', 'Field Operations & On-site Case Studies')">
+                <div class="img-box"><img src="mdp-field22 (1).jpg" alt="MDP Field"></div>
+                <div class="item-info"><span>Field Operations</span><h3>Field Survey & Outreach</h3></div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="lightbox-overlay" id="customLightbox" onclick="closeLightbox()">
+        <div class="lightbox-content" onclick="event.stopPropagation()">
+            <button class="lightbox-close" onclick="closeLightbox()"><i class="fa-solid fa-xmark"></i></button>
+            <img id="lightboxImg" src="" alt="Popup Image">
+            <div class="lightbox-caption" id="lightboxCaption">Caption text here</div>
+        </div>
+    </div>
+
+    <div class="lightbox-overlay" id="customLightbox" onclick="closeLightbox()">
+        <div class="lightbox-content" onclick="event.stopPropagation()">
+            <button class="lightbox-close" onclick="closeLightbox()"><i class="fa-solid fa-xmark"></i></button>
+            <img id="lightboxImg" src="" alt="Popup Image">
+            <div class="lightbox-caption" id="lightboxCaption">Caption text here</div>
+        </div>
+    </div>
+<script>
+    // --- SIDE DRAWER OPERATIONS (Fixed matching your Part 2 Button) ---
+    function toggleSideMenu() {
+        var drawer = document.getElementById('side-drawer');
+        if (drawer.style.display === 'block') {
+            drawer.style.right = '-300px';
+            setTimeout(() => { drawer.style.display = 'none'; }, 300);
+        } else {
+            drawer.style.display = 'block';
+            setTimeout(() => { drawer.style.right = '0px'; }, 10);
+        }
+    }
+    
+    function toggleSettingsDropdown() {
+        var panel = document.getElementById('settings-panel');
+        var chevron = document.getElementById('settings-chevron');
+        if (panel.style.display === 'flex') {
+            panel.style.display = 'none';
+            chevron.style.transform = 'rotate(0deg)';
+        } else {
+            panel.style.display = 'flex';
+            chevron.style.transform = 'rotate(180deg)';
+        }
+    }
+    
+    function toggleContrast() { document.body.classList.toggle('high-contrast'); }
+    function maximizeFont() { document.body.classList.toggle('large-text'); }
+
+    // --- GALLERY FILTER FUNCTION ---
+    function filterGallery(category) {
+        const items = document.querySelectorAll('.gallery-item');
+        const buttons = document.querySelectorAll('.filter-btn');
+        
+        buttons.forEach(btn => btn.classList.remove('active'));
+        event.currentTarget.classList.add('active');
+
+        items.forEach(item => {
+            if (category === 'all' || item.getAttribute('data-category') === category) {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    }
+
+    // --- SWIPE & DRAG LIGHTBOX LOGIC (NO ARROWS) ---
+    let activeImagesList = []; 
+    let currentImgIndex = 0;   
+    
+    let startX = 0;
+    let endX = 0;
+    let isDragging = false;
+
+    function openLightbox(src, captionText) {
+        const lightbox = document.getElementById('customLightbox');
+        const img = document.getElementById('lightboxImg');
+        const caption = document.getElementById('lightboxCaption');
+        
+        activeImagesList = [];
+        const visibleItems = document.querySelectorAll('.gallery-item');
+        
+        visibleItems.forEach(item => {
+            if (item.style.display !== 'none') {
+                const itemImg = item.querySelector('.img-box img').getAttribute('src');
+                const itemCap = item.querySelector('.item-info h3').innerText;
+                activeImagesList.push({ src: itemImg, caption: itemCap });
+            }
+        });
+
+        currentImgIndex = activeImagesList.findIndex(item => item.src === src);
+        if (currentImgIndex === -1) currentImgIndex = 0;
+
+        img.src = src;
+        caption.innerText = captionText;
+        
+        lightbox.classList.add('active');
+        initSwipeFeatures();
+    }
+
+    function closeLightbox() {
+        document.getElementById('customLightbox').classList.remove('active');
+    }
+
+    function showNextImage() {
+        if (activeImagesList.length <= 1) return;
+        currentImgIndex = (currentImgIndex + 1) % activeImagesList.length;
+        updateLightboxContent();
+    }
+
+    function showPrevImage() {
+        if (activeImagesList.length <= 1) return;
+        currentImgIndex = (currentImgIndex - 1 + activeImagesList.length) % activeImagesList.length;
+        updateLightboxContent();
+    }
+
+    function updateLightboxContent() {
+        const img = document.getElementById('lightboxImg');
+        const caption = document.getElementById('lightboxCaption');
+        
+        img.style.opacity = '0';
+        setTimeout(() => {
+            img.src = activeImagesList[currentImgIndex].src;
+            caption.innerText = activeImagesList[currentImgIndex].caption;
+            img.style.opacity = '1';
+        }, 150);
+    }
+
+    function initSwipeFeatures() {
+        const lightboxContent = document.querySelector('.lightbox-content');
+        
+        lightboxContent.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+        }, { passive: true });
+
+        lightboxContent.addEventListener('touchend', (e) => {
+            endX = e.changedTouches[0].clientX;
+            handleSwipeGesture();
+        }, { passive: true });
+
+        lightboxContent.addEventListener('mousedown', (e) => {
+            startX = e.clientX;
+            isDragging = true;
+            lightboxContent.style.cursor = 'grabbing';
+        });
+
+        lightboxContent.addEventListener('mouseup', (e) => {
+            if (!isDragging) return;
+            endX = e.clientX;
+            isDragging = false;
+            lightboxContent.style.cursor = 'pointer';
+            handleSwipeGesture();
+        });
+
+        lightboxContent.addEventListener('mouseleave', () => {
+            if (isDragging) {
+                isDragging = false;
+                lightboxContent.style.cursor = 'pointer';
+            }
+        });
+    }
+
+    function handleSwipeGesture() {
+        const threshold = 50; 
+        if (startX - endX > threshold) {
+            showNextImage();
+        } else if (endX - startX > threshold) {
+            showPrevImage();
+        }
+    }
+
+    document.addEventListener('keydown', (e) => {
+        const lightbox = document.getElementById('customLightbox');
+        if (lightbox.classList.contains('active')) {
+            if (e.key === 'ArrowRight') showNextImage();
+            if (e.key === 'ArrowLeft') showPrevImage();
+            if (e.key === 'Escape') closeLightbox();
+        }
+    });
+</script>
+
+</body>
+</html>

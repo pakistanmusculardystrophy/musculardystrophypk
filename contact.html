@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - MDP Pakistan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #2A7DE1;
+            --primary-dark: #1A5CB8;
+            --bg-white: #FFFFFF;
+            --text-dark: #333333;
+        }
+        body { font-family: 'Poppins', sans-serif; margin: 0; padding: 0; background-color: #f8fafc; color: var(--text-dark); }
+        header { background-color: var(--bg-white); border-bottom: 3px solid var(--primary-blue); padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .container { max-width: 800px; margin: 40px auto; padding: 0 20px; }
+        .contact-card { background: #fff; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); padding: 40px 30px; border-top: 5px solid var(--primary-blue); }
+        .contact-heading { text-align: center; color: var(--primary-dark); margin-top: 0; font-size: 1.8rem; font-weight: 700; }
+        .contact-sub { text-align: center; color: #666; margin-bottom: 40px; font-size: 0.95rem; }
+        .info-row { display: flex; align-items: flex-start; gap: 20px; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid #f0f0f0; }
+        .info-icon { background: #e8f1fc; color: var(--primary-blue); width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+        .info-text h3 { margin: 0 0 5px 0; font-size: 1.05rem; color: #444; font-weight: 600; }
+        .info-text p { margin: 0; color: #666; font-size: 0.95rem; line-height: 1.5; }
+        .social-container { text-align: center; margin-top: 45px; padding-top: 25px; border-top: 2px dashed #e2e8f0; }
+        .social-title { font-weight: 600; color: #444; margin-bottom: 15px; font-size: 1rem; letter-spacing: 0.5px; }
+        .social-links { display: flex; justify-content: center; gap: 20px; }
+        .social-icon { width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; color: white; text-decoration: none; transition: 0.2s; }
+        .fb { background: #3b5998; } .insta { background: #e1306c; } .linkdin { background: #0077b5; }
+        .social-icon:hover { transform: translateY(-3px); opacity: 0.9; }
+        footer { text-align: center; padding: 30px; color: #888; font-size: 0.85rem; margin-top: 40px; }
+        /* --- Desktop View Content Width Fix --- */
+.container { 
+    width: 100% !important; 
+    max-width: 1350px !important; /* Puraane 800px-1100px se badha kar full modern screen size kar diya */
+    margin: 0 auto !important; 
+    padding: 40px 30px !important; 
+    box-sizing: border-box !important;
+}
+
+/* Header ki navigation aur elements ko bhi corner-to-corner wide karne ke liye */
+.nav-container {
+    max-width: 1350px !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+}
+
+/* Footer layout ko bhi full width par align karne ke liye */
+.footer-container, footer .container {
+    max-width: 1350px !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+}
+/* --- Contact Page Mobile View Responsive Fix --- */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px 15px !important; /* Mobile par side se safety padding waapis de di */
+        width: 100% !important;
+    }
+    
+    /* Email ya lambay text ko screen se bahar janay se rokne ke liye */
+    .container a, .container p, .container span {
+        word-wrap: break-word !important;
+        word-break: break-all !important;
+        font-size: 0.95rem; /* Mobile screen ke hisab se text balance */
+    }
+
+    /* Agar icons aur text bilkul chipke hain toh contact info row ko stretch handle karein */
+    .contact-info-item, .info-row {
+        padding: 10px 5px !important;
+    }
+}
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <img src="logo.png" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=100&q=80';" style="width: 55px; height: 55px; object-fit: contain;" alt="MDP">
+            <h1 style="margin:0; font-size: 1.2rem; color: #1A5CB8; font-weight:700;">MDP Pakistan</h1>
+        </div>
+        <a href="index.html" style="text-decoration: none; color: var(--primary-blue); font-weight: 600; font-size: 0.95rem;"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+    </header>
+
+    <div class="container">
+        <div class="contact-card">
+            <h2 class="contact-heading">GET IN TOUCH</h2>
+            <p class="contact-sub">Have questions or want to support? Reach out to us directly through any channel below.</p>
+
+            <!-- Phone Number Info Row -->
+            <div class="info-row">
+                <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
+                <div class="info-text">
+                    <h3>Phone Number</h3>
+                    <p>+92 300 2538919</p>
+                </div>
+            </div>
+
+            <!-- Email Info Row -->
+            <div class="info-row">
+                <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
+                <div class="info-text">
+                    <h3>Email Address</h3>
+                    <p>info@musculardystrophypk.org</p>
+                </div>
+            </div>
+
+            <!-- Physical Address Info Row -->
+            <div class="info-row">
+                <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+                <div class="info-text">
+                    <h3>Official Headquarters Address</h3>
+                    <p>Bungalow 275, Sector 10, Sadiq Levina, Opposite Kababjees Bypass, Rajputana Hospital, Qasimabad, Hyderabad, Sindh.</p>
+                </div>
+            </div>
+
+            <!-- Social Media Block Inside Contact Context -->
+            <div class="social-container">
+                <div class="social-title">CONNECT WITH US ON SOCIAL MEDIA</div>
+                <div class="social-links">
+                <a href="https://www.facebook.com/share/18mSGQ3L6U/" class="social-icon fb" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/musculardystrophypakistan" class="social-icon insta" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                 <a href="https://www.linkedin.com/in/ghulam-ali-9b2a74101" class="social-icon linkdin" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+                  <a href="https://x.com/muscular_p121" class="social-icon twitter" target="_blank" style="background: #000 !important; color: #fff !important;"><i class="fa-brands fa-twitter"></i></a>
+                  <a href="https://bsky.app/profile/mdpakistanorg.bsky.social" class="social-icon bluesky" target="_blank" style="background: #0085ff !important; color: #fff !important;"><i class="fas fa-cloud"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Muscular Dystrophy Pakistan. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Projects & Initiatives - MDP Pakistan</title>
+    <!-- Font Awesome Icons Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { box-sizing: border-box; font-family: 'DM Sans', sans-serif; }
+        body { margin: 0; background: #f8f9fa; color: #333; }
+        
+        /* HEADER & NAVIGATION STYLES */
+        .main-header { display: flex; justify-content: space-between; align-items: center; padding: 10px 5%; background: #ffffff; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+        
+        /* LOGO AREA */
+        .logo-area { text-decoration: none; display: flex; align-items: center; gap: 10px; }
+        .logo-img { height: 45px; width: auto; object-fit: contain; border-radius: 50%; }
+        .logo-text { font-weight: bold; font-size: 20px; }
+        
+        .desktop-nav a { text-decoration: none; color: #333; font-weight: 500; margin-left: 20px; font-size: 15px; transition: 0.3s; }
+        .desktop-nav a:hover { color: #0d47a1; }
+        .hamburger-btn { display: none; background: none; border: none; font-size: 24px; color: #333; cursor: pointer; }
+        
+        /* MOBILE MENU SIDEBAR */
+        .sidebar-menu { position: fixed; top: 0; right: -280px; width: 280px; height: 100%; background: #ffffff; box-shadow: -4px 0 15px rgba(0,0,0,0.1); z-index: 2000; padding: 30px 20px; display: flex; flex-direction: column; gap: 20px; transition: 0.4s ease; }
+        .sidebar-menu.active { right: 0; }
+        .sidebar-menu a { text-decoration: none; color: #333; font-weight: 500; font-size: 1rem; display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid #eee; }
+        .close-btn { align-self: flex-end; background: none; border: none; font-size: 24px; color: #333; cursor: pointer; margin-bottom: 20px; }
+
+        @media (max-width: 991px) {
+            .desktop-nav { display: none; }
+            .hamburger-btn { display: block; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== MAIN HEADER ==================== -->
+    <header class="main-header">
+        <a href="index.html" class="logo-area">
+            <img src="logo.png" alt="MDP Logo" class="logo-img">
+            <div class="logo-text">
+                <span style="color: #0d47a1;">MDP</span> <span style="color: #27ae60;">Pakistan</span>
+            </div>
+        </a>
+        <nav class="desktop-nav">
+            <a href="index.html">Home</a>
+            <a href="projects.html" style="color: #0d47a1; font-weight: 700;">Our Projects</a>
+            <a href="news.html">News & Updates</a>
+            <a href="about.html#about">About Us</a>
+            <a href="types.html">Classifications</a>
+            <a href="registration.html">Registry Dashboard</a>
+            <a href="donation.html" style="color: #2A7DE1; font-weight: 700;">Donate</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <button class="hamburger-btn" onclick="toggleSideMenu()"><i class="fa-solid fa-bars"></i></button>
+    </header>
+
+    <!-- ==================== MOBILE NAVIGATION ==================== -->
+    <div class="sidebar-menu" id="mobileMenu">
+        <button class="close-btn" onclick="toggleSideMenu()"><i class="fa-solid fa-xmark"></i></button>
+        <a href="index.html" onclick="toggleSideMenu()"><i class="fa-solid fa-house"></i> Home</a>
+        <a href="projects.html" onclick="toggleSideMenu()" style="color: #0d47a1; font-weight: 700;"><i class="fa-solid fa-folder-open"></i> Our Projects</a>
+        <a href="news.html" onclick="toggleSideMenu()"><i class="fa-solid fa-newspaper"></i> News & Updates</a>
+        <a href="index.html#about" onclick="toggleSideMenu()"><i class="fa-solid fa-address-card"></i> About Us</a>
+        <a href="types.html" onclick="toggleSideMenu()"><i class="fa-solid fa-layer-group"></i> Classifications</a>
+        <a href="registration.html" onclick="toggleSideMenu()"><i class="fa-solid fa-id-card"></i> Registry Dashboard</a>
+        <a href="donation.html" onclick="toggleSideMenu()" style="color: #2A7DE1;"><i class="fa-solid fa-hand-holding-heart"></i> Donate</a>
+        <a href="contact.html" onclick="toggleSideMenu()"><i class="fa-solid fa-envelope"></i> Contact</a>
+    </div>
+
+    <!-- ==================== TOP HERO BANNER ==================== -->
+    <div style="background: linear-gradient(135deg, #0d47a1, #27ae60); padding: 50px 20px; text-align: center; color: white; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+        <h1 style="margin: 0; font-size: 32px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">Our Completed Projects</h1>
+        <p style="margin-top: 10px; font-size: 16px; opacity: 0.95; max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.6;">
+            A detailed look into the successful milestones and continuous welfare initiatives executed by Muscular Dystrophy Pakistan.
+        </p>
+    </div>
+
+    <!-- ==================== PROJECTS LIST CONTAINER ==================== -->
+    <div style="max-width: 1300px; margin: 40px auto; padding: 0 20px; display: flex; flex-direction: column; gap: 35px;">
+        <div style="background: #ffffff; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.04); border-top: 5px solid #27ae60; padding: 30px;">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+                <span style="background: #eaf6ee; color: #27ae60; padding: 5px 12px; border-radius: 20px; font-weight: bold; font-size: 12px; text-transform: uppercase;">Annual Campaign</span>
+                <span style="color: #666; font-size: 13px; font-weight: 500;"><i class="fa-regular fa-calendar"></i> September 30, 2025</span>
+            </div>
+            <h2 style="color: #0d47a1; margin: 0 0 12px 0; font-size: 22px;">LGMD Awareness Day</h2>
+            <p style="color: #555; line-height: 1.7; font-size: 15px; margin-bottom: 20px;">
+                To mark Limb-Girdle Muscular Dystrophy (LGMD) Awareness Day, MDP organized a highly impactful public advocacy campaign. The initiative featured an **Awareness Walk** where community members, supporters, and patients marched together holding banners to raise local visibility for rare muscle diseases. Following the walk, an interactive **Educational Seminar** was hosted utilizing multimedia presentations to train doctors, caretakers, and individuals on diagnosis pathways, standard disease management, and standard rehabilitation tools.
+            </p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 15px;">
+                
+                <div style="border-radius: 8px; overflow: hidden; box-shadow: 0 2px 6px rgba(0,0,0,0.08); grid-column: 1 / -1; max-height: 350px;">
+                    <img src="lgmd-walk.jpg" alt="LGMD Public Awareness Walk" onclick="openSwipeModal(0)" style="width: 100%; height: 100%; object-fit: cover; display: block; cursor: zoom-in;">
+                </div>
+
+                <div style="border-radius: 8px; overflow: hidden; box-shadow: 0 2px 6px rgba(0,0,0,0.08); height: 160px;">
+                    <img src="lgmd-pic1.jpg" alt="Seminar Multimedia Presentation" onclick="openSwipeModal(1)" style="width: 100%; height: 100%; object-fit: cover; display: block; cursor: zoom-in;">
+                </div>
+
+                <div style="border-radius: 8px; overflow: hidden; box-shadow: 0 2px 6px rgba(0,0,0,0.08); height: 160px;">
+                    <img src="lgmd-pic2.jpg" alt="Keynote Presentation Guest Speaker" onclick="openSwipeModal(2)" style="width: 100%; height: 100%; object-fit: cover; display: block; cursor: zoom-in;">
+                </div>
+
+                <div style="border-radius: 8px; overflow: hidden; box-shadow: 0 2px 6px rgba(0,0,0,0.08); height: 160px;">
+                    <img src="lgmd-pic3.jpg" alt="Seminar Audience and Participants" onclick="openSwipeModal(3)" style="width: 100%; height: 100%; object-fit: cover; display: block; cursor: zoom-in;">
+                </div>
+
+                <div style="border-radius: 8px; overflow: hidden; box-shadow: 0 2px 6px rgba(0,0,0,0.08); height: 160px;">
+                    <img src="lgmd-pic4.jpg" alt="Caregivers and Local Attendees" onclick="openSwipeModal(4)" style="width: 100%; height: 100%; object-fit: cover; display: block; cursor: zoom-in;">
+                </div>
+
+                <div style="border-radius: 8px; overflow: hidden; box-shadow: 0 2px 6px rgba(0,0,0,0.08); height: 160px;">
+                    <img src="lgmd-pic5.jpg" alt="Clinical Awareness Training" onclick="openSwipeModal(5)" style="width: 100%; height: 100%; object-fit: cover; display: block; cursor: zoom-in;">
+                </div>
+
+                <div style="border-radius: 8px; overflow: hidden; box-shadow: 0 2px 6px rgba(0,0,0,0.08); height: 160px;">
+                    <img src="lgmd-pic6.jpg" alt="Expert Advisory Panel Table" onclick="openSwipeModal(6)" style="width: 100%; height: 100%; object-fit: cover; display: block; cursor: zoom-in;">
+                </div>
+
+            </div>
+        </div>
+
+        <div id="swipeLightboxModal" style="display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.95); flex-direction: column; align-items: center; justify-content: center;">
+          
+            <span onclick="closeSwipeModal()" style="position: absolute; top: 15px; right: 25px; color: #fff; font-size: 35px; font-weight: bold; cursor: pointer; z-index: 10001;">&times;</span>
+            
+            <div id="swipeImageWrapper" style="display: flex; width: 100%; max-width: 850px; height: 75vh; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; -webkit-overflow-scrolling: touch;">
+                
+                <div style="min-width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; scroll-snap-align: center; flex-direction: column; padding: 0 10px; box-sizing: border-box;">
+                    <img src="lgmd-walk.jpg" style="max-width: 100%; max-height: 85%; object-fit: contain; border-radius: 4px;">
+                    <p style="color: white; margin-top: 10px; font-size: 14px; text-align: center;">LGMD Public Awareness Walk (1 / 7)</p>
+                </div>
+
+                <div style="min-width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; scroll-snap-align: center; flex-direction: column; padding: 0 10px; box-sizing: border-box;">
+                    <img src="lgmd-pic1.jpg" style="max-width: 100%; max-height: 85%; object-fit: contain; border-radius: 4px;">
+                    <p style="color: white; margin-top: 10px; font-size: 14px; text-align: center;">Seminar Multimedia Presentation (2 / 7)</p>
+                </div>
+
+                <div style="min-width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; scroll-snap-align: center; flex-direction: column; padding: 0 10px; box-sizing: border-box;">
+                    <img src="lgmd-pic2.jpg" style="max-width: 100%; max-height: 85%; object-fit: contain; border-radius: 4px;">
+                    <p style="color: white; margin-top: 10px; font-size: 14px; text-align: center;">Keynote Presentation Guest Speaker (3 / 7)</p>
+                </div>
+
+                <div style="min-width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; scroll-snap-align: center; flex-direction: column; padding: 0 10px; box-sizing: border-box;">
+                    <img src="lgmd-pic3.jpg" style="max-width: 100%; max-height: 85%; object-fit: contain; border-radius: 4px;">
+                    <p style="color: white; margin-top: 10px; font-size: 14px; text-align: center;">Seminar Audience and Participants (4 / 7)</p>
+                </div>
+
+                <div style="min-width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; scroll-snap-align: center; flex-direction: column; padding: 0 10px; box-sizing: border-box;">
+                    <img src="lgmd-pic4.jpg" style="max-width: 100%; max-height: 85%; object-fit: contain; border-radius: 4px;">
+                    <p style="color: white; margin-top: 10px; font-size: 14px; text-align: center;">Caregivers and Local Attendees (5 / 7)</p>
+                </div>
+
+                <div style="min-width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; scroll-snap-align: center; flex-direction: column; padding: 0 10px; box-sizing: border-box;">
+                    <img src="lgmd-pic5.jpg" style="max-width: 100%; max-height: 85%; object-fit: contain; border-radius: 4px;">
+                    <p style="color: white; margin-top: 10px; font-size: 14px; text-align: center;">Clinical Awareness Training (6 / 7)</p>
+                </div>
+
+                <div style="min-width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; scroll-snap-align: center; flex-direction: column; padding: 0 10px; box-sizing: border-box;">
+                    <img src="lgmd-pic6.jpg" style="max-width: 100%; max-height: 85%; object-fit: contain; border-radius: 4px;">
+                    <p style="color: white; margin-top: 10px; font-size: 14px; text-align: center;">Expert Advisory Panel Table (7 / 7)</p>
+                </div>
+
+            </div>
+
+            <div style="color: #666; font-size: 12px; margin-top: 10px;"><i class="fa-solid fa-arrows-left-right"></i> Swipe left or right to view more</div>
+        </div>
+
+        <script>
+            function openSwipeModal(slideIndex) {
+                var modal = document.getElementById("swipeLightboxModal");
+                var wrapper = document.getElementById("swipeImageWrapper");
+                
+                modal.style.display = "flex";
+                
+                // Yeh function direct us image par page ko scroll karwa dega jis par click kiya gaya ho
+                setTimeout(function() {
+                    var width = wrapper.offsetWidth;
+                    wrapper.scrollLeft = slideIndex * width;
+                }, 50);
+            }
+
+            function closeSwipeModal() {
+                document.getElementById("swipeLightboxModal").style.display = "none";
+            }
+        </script>
+
+               <div style="background: #ffffff; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.04); border-top: 5px solid #0d47a1; padding: 30px; margin-top: 30px;">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+                <span style="background: #e3f2fd; color: #0d47a1; padding: 5px 12px; border-radius: 20px; font-weight: bold; font-size: 12px; text-transform: uppercase;">Public Advocacy</span>
+                <span style="color: #666; font-size: 13px; font-weight: 500;"><i class="fa-regular fa-calendar"></i> Solidarity Event</span>
+            </div>
+            <h2 style="color: #0d47a1; margin: 0 0 12px 0; font-size: 22px;">Run for Rare Pakistan</h2>
+            <p style="color: #555; line-height: 1.7; font-size: 15px; margin-bottom: 20px;">
+                "Run for Rare Pakistan" stands as a premier solidarity campaign where people from all walks of life come together to support rare disease warriors. The core objective of this initiative is to advocate for the fundamental healthcare rights and comprehensive social inclusion of individuals living with Muscular Dystrophy. By mobilizing communities, we actively champion structural accessibility and equal opportunities within society.
+            </p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-top: 15px;">
+                
+                <div style="border-radius: 8px; overflow: hidden; box-shadow: 0 2px 6px rgba(0,0,0,0.08); grid-column: 1 / -1; max-height: 350px;">
+                    <img src="run-rare-group1.jpg" alt="Run for Rare Campaign Banner Group" onclick="openRunSlider(0)" style="width: 100%; height: 100%; object-fit: cover; display: block; cursor: zoom-in;">
+                </div>
+
+                <div style="border-radius: 8px; overflow: hidden; box-shadow: 0 2px 6px rgba(0,0,0,0.08); height: 140px;">
+                    <img src="run-rare-kids.jpg" alt="Children Solidarity Marathon" onclick="openRunSlider(1)" style="width: 100%; height: 100%; object-fit: cover; display: block; cursor: zoom-in;">
+                </div>
+
+                <div style="border-radius: 8px; overflow: hidden; box-shadow: 0 2px 6px rgba(0,0,0,0.08); height: 140px;">
+                    <img src="run-rare-youth.jpg" alt="Youth Raising Placards for Rare Lives" onclick="openRunSlider(2)" style="width: 100%; height: 100%; object-fit: cover; display: block; cursor: zoom-in;">
+                </div>
+
+                <div style="border-radius: 8px; overflow: hidden; box-shadow: 0 2px 6px rgba(0,0,0,0.08); height: 140px;">
+                    <img src="run-rare-posters.jpg" alt="Advocacy Posters and Slogans Session" onclick="openRunSlider(3)" style="width: 100%; height: 100%; object-fit: cover; display: block; cursor: zoom-in;">
+                </div>
+
+                <div style="border-radius: 8px; overflow: hidden; box-shadow: 0 2px 6px rgba(0,0,0,0.08); height: 140px;">
+                    <img src="run-rare-community.jpg" alt="Community Stakeholders Consultation" onclick="openRunSlider(4)" style="width: 100%; height: 100%; object-fit: cover; display: block; cursor: zoom-in;">
+                </div>
+
+            </div>
+        </div>
+
+        <div id="runSliderModal" style="display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.96); flex-direction: column; align-items: center; justify-content: center;">
+
+            <span onclick="closeRunSlider()" style="position: absolute; top: 15px; right: 25px; color: #fff; font-size: 35px; font-weight: bold; cursor: pointer; z-index: 10002;">&times;</span>
+            
+            <div id="runImageWrapper" style="display: flex; width: 100%; max-width: 850px; height: 75vh; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; -webkit-overflow-scrolling: touch;">
+                
+                <div style="min-width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; scroll-snap-align: center; flex-direction: column; padding: 0 10px; box-sizing: border-box;">
+                    <img src="run-rare-group1.jpg" style="max-width: 100%; max-height: 85%; object-fit: contain; border-radius: 4px;">
+                    <p style="color: white; margin-top: 10px; font-size: 14px; text-align: center;">Run for Rare Campaign Banner Group (1 / 5)</p>
+                </div>
+
+                <div style="min-width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; scroll-snap-align: center; flex-direction: column; padding: 0 10px; box-sizing: border-box;">
+                    <img src="run-rare-kids.jpg" style="max-width: 100%; max-height: 85%; object-fit: contain; border-radius: 4px;">
+                    <p style="color: white; margin-top: 10px; font-size: 14px; text-align: center;">Children Solidarity Marathon (2 / 5)</p>
+                </div>
+
+                <div style="min-width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; scroll-snap-align: center; flex-direction: column; padding: 0 10px; box-sizing: border-box;">
+                    <img src="run-rare-youth.jpg" style="max-width: 100%; max-height: 85%; object-fit: contain; border-radius: 4px;">
+                    <p style="color: white; margin-top: 10px; font-size: 14px; text-align: center;">Youth Raising Placards for Rare Lives (3 / 5)</p>
+                </div>
+
+                <div style="min-width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; scroll-snap-align: center; flex-direction: column; padding: 0 10px; box-sizing: border-box;">
+                    <img src="run-rare-posters.jpg" style="max-width: 100%; max-height: 85%; object-fit: contain; border-radius: 4px;">
+                    <p style="color: white; margin-top: 10px; font-size: 14px; text-align: center;">Advocacy Posters and Slogans Session (4 / 5)</p>
+                </div>
+
+                <div style="min-width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; scroll-snap-align: center; flex-direction: column; padding: 0 10px; box-sizing: border-box;">
+                    <img src="run-rare-community.jpg" style="max-width: 100%; max-height: 85%; object-fit: contain; border-radius: 4px;">
+                    <p style="color: white; margin-top: 10px; font-size: 14px; text-align: center;">Community Stakeholders Consultation (5 / 5)</p>
+                </div>
+
+            </div>
+
+            <div style="color: #777; font-size: 12px; margin-top: 10px;"><i class="fa-solid fa-arrows-left-right"></i> Swipe left or right to scroll images</div>
+        </div>
+
+        <script>
+            function openRunSlider(slideIndex) {
+                var modal = document.getElementById("runSliderModal");
+                var wrapper = document.getElementById("runImageWrapper");
+                
+                modal.style.display = "flex";
+                
+                // Clicked image par direct content focus scrolling
+                setTimeout(function() {
+                    var width = wrapper.offsetWidth;
+                    wrapper.scrollLeft = slideIndex * width;
+                }, 50);
+            }
+
+            function closeRunSlider() {
+                document.getElementById("runSliderModal").style.display = "none";
+            }
+        </script>
+
+
+        <div style="background: #ffffff; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.04); border-top: 5px solid #2e7d32; padding: 30px; margin-top: 30px;">
+            
+            <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 15px;">
+                <span style="background: #e8f5e9; color: #2e7d32; padding: 5px 12px; border-radius: 20px; font-weight: bold; font-size: 12px; text-transform: uppercase;">Pilot Project</span>
+                <span style="background: #fff3e0; color: #e65100; padding: 5px 12px; border-radius: 20px; font-weight: bold; font-size: 12px;">Sponsored by EveryLife Foundation</span>
+                <span style="color: #666; font-size: 13px; font-weight: 500;"><i class="fa-regular fa-calendar"></i> 1 Mar - 31 May 2026</span>
+            </div>
+
+            <h2 style="color: #2e7d32; margin: 0 0 15px 0; font-size: 22px; line-height: 1.4;">
+                Provision of Modern Tools and Resources for Data Collection, Registration, and Support of Patients Affected by Muscular Dystrophy
+            </h2>
+
+            <p style="color: #555; line-height: 1.7; font-size: 15px; margin-bottom: 20px;">
+                Implemented by <strong>Muscular Dystrophy Pakistan (MDP)</strong> across Taluka Thul, District Jacobabad, Sindh, this crucial initiative establishes a community-based registration and identification system. Targeting 10 highly vulnerable Union Councils, the project bridges severe awareness gaps, distributes vital educational materials, and maps patient mobility and socio-economic needs to build a structured national registry for rare disease warriors.
+            </p>
+
+            <h3 style="color: #333; font-size: 16px; margin: 25px 0 12px 0; border-left: 4px solid #2e7d32; padding-left: 8px;">Project Cumulative Progress</h3>
+            <div style="overflow-x: auto; margin-bottom: 25px; border-radius: 8px; border: 1px solid #e0e0e0;">
+                <table style="width: 100%; border-collapse: collapse; font-size: 14px; text-align: left; min-width: 400px;">
+                    <thead>
+                        <tr style="background-color: #f1f8e9; color: #2e7d32; border-bottom: 2px solid #c8e6c9;">
+                            <th style="padding: 12px 15px; font-weight: 600;">Key Evaluation Metric</th>
+                            <th style="padding: 12px 15px; font-weight: 600; text-align: center;">Cumulative Total</th>
+                        </tr>
+                    </thead>
+                    <tbody style="color: #444;">
+                        <tr style="border-bottom: 1px solid #e0e0e0;">
+                            <td style="padding: 10px 15px;">Union Councils (UCs) Covered</td>
+                            <td style="padding: 10px 15px; text-align: center; font-weight: bold;">10</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e0e0e0; background: #fafafa;">
+                            <td style="padding: 10px 15px;">Total Registered MD Cases / Beneficiaries</td>
+                            <td style="padding: 10px 15px; text-align: center; font-weight: bold; color: #2e7d32;">185</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e0e0e0;">
+                            <td style="padding: 10px 15px;">Total Rural Villages Visited</td>
+                            <td style="padding: 10px 15px; text-align: center; font-weight: bold;">500</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e0e0e0; background: #fafafa;">
+                            <td style="padding: 10px 15px;">Awareness & Advocacy Sessions Conducted</td>
+                            <td style="padding: 10px 15px; text-align: center; font-weight: bold;">19</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e0e0e0;">
+                            <td style="padding: 10px 15px;">Total Participants Reached</td>
+                            <td style="padding: 10px 15px; text-align: center; font-weight: bold;">800+</td>
+                        </tr>
+                        <tr style="background: #f1f8e9;">
+                            <td style="padding: 12px 15px; font-weight: bold;">IEC Information Materials Distributed</td>
+                            <td style="padding: 12px 15px; text-align: center; font-weight: bold; color: #2e7d32;">800+</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 style="color: #333; font-size: 16px; margin: 20px 0 12px 0; border-left: 4px solid #2e7d32; padding-left: 8px;">Field Operations Evidence</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px;">
+                
+                <div style="border-radius: 6px; overflow: hidden; height: 100px; box-shadow: 0 2px 5px rgba(0,0,0,0.06);"><img src="mdp-field1.jpg" alt="Field session" onclick="openMdpSlider(0)" style="width:100%; height:100%; object-fit:cover; cursor:zoom-in;"></div>
+                <div style="border-radius: 6px; overflow: hidden; height: 100px; box-shadow: 0 2px 5px rgba(0,0,0,0.06);"><img src="mdp-field2.jpg" alt="Field session" onclick="openMdpSlider(1)" style="width:100%; height:100%; object-fit:cover; cursor:zoom-in;"></div>
+                <div style="border-radius: 6px; overflow: hidden; height: 100px; box-shadow: 0 2px 5px rgba(0,0,0,0.06);"><img src="mdp-field3.jpg" alt="Field session" onclick="openMdpSlider(2)" style="width:100%; height:100%; object-fit:cover; cursor:zoom-in;"></div>
+                <div style="border-radius: 6px; overflow: hidden; height: 100px; box-shadow: 0 2px 5px rgba(0,0,0,0.06);"><img src="mdp-field4.jpg" alt="Field session" onclick="openMdpSlider(3)" style="width:100%; height:100%; object-fit:cover; cursor:zoom-in;"></div>
+                <div style="border-radius: 6px; overflow: hidden; height: 100px; box-shadow: 0 2px 5px rgba(0,0,0,0.06);"><img src="mdp-field5.jpg" alt="Field session" onclick="openMdpSlider(4)" style="width:100%; height:100%; object-fit:cover; cursor:zoom-in;"></div>
+                <div style="border-radius: 6px; overflow: hidden; height: 100px; box-shadow: 0 2px 5px rgba(0,0,0,0.06);"><img src="mdp-field6.jpg" alt="Field session" onclick="openMdpSlider(5)" style="width:100%; height:100%; object-fit:cover; cursor:zoom-in;"></div>
+                <div style="border-radius: 6px; overflow: hidden; height: 100px; box-shadow: 0 2px 5px rgba(0,0,0,0.06);"><img src="mdp-field7.jpg" alt="Field session" onclick="openMdpSlider(6)" style="width:100%; height:100%; object-fit:cover; cursor:zoom-in;"></div>
+                
+                <div onclick="openMdpSlider(7)" style="position: relative; border-radius: 6px; overflow: hidden; height: 100px; box-shadow: 0 2px 5px rgba(0,0,0,0.06); cursor: pointer;">
+                    <img src="mdp-field8.jpg" style="width:100%; height:100%; object-fit:cover;">
+                    <div style="position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.65); display: flex; flex-direction: column; justify-content: center; align-items: center; color: white;">
+                        <span style="font-weight: bold; font-size: 18px;">+14</span>
+                        <span style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px;">More Photos</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="mdpSliderModal" style="display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.97); flex-direction: column; align-items: center; justify-content: center;">
+            <span onclick="closeMdpSlider()" style="position: absolute; top: 15px; right: 25px; color: #fff; font-size: 35px; font-weight: bold; cursor: pointer; z-index: 10002;">&times;</span>
+            
+            <div id="mdpImageWrapper" style="display: flex; width: 100%; max-width: 850px; height: 75vh; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; -webkit-overflow-scrolling: touch;">
+                </div>
+
+            <div style="color: #999; font-size: 13px; margin-top: 15px;"><i class="fa-solid fa-arrows-left-right"></i> Swipe Left / Right to view all 22 field updates</div>
+        </div>
+
+        <script>
+            const wrapper = document.getElementById("mdpImageWrapper");
+            const totalImages = 22;
+            
+            // Loop automatically generates all 22 full screen sliding viewports
+            for (let i = 1; i <= totalImages; i++) {
+                const item = document.createElement("div");
+                item.style.cssText = "min-width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; scroll-snap-align: center; flex-direction: column; padding: 0 10px; box-sizing: border-box;";
+                item.innerHTML = `
+                    <img src="mdp-field${i}.jpg" style="max-width: 100%; max-height: 85%; object-fit: contain; border-radius: 4px;">
+                    <p style="color: white; margin-top: 12px; font-size: 14px;">Field Activity Update — Photo ${i} of ${totalImages}</p>
+                `;
+                wrapper.appendChild(item);
+            }
+
+            function openMdpSlider(slideIndex) {
+                var modal = document.getElementById("mdpSliderModal");
+                modal.style.display = "flex";
+                setTimeout(function() {
+                    var width = wrapper.offsetWidth;
+                    wrapper.scrollLeft = slideIndex * width;
+                }, 50);
+            }
+            
+            function closeMdpSlider() {
+                document.getElementById("mdpSliderModal").style.display = "none";
+            }
+        </script>
+
+
+        <div style="background: #ffffff; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.04); border-top: 5px solid #00838f; padding: 30px; margin-top: 30px;">
+            
+            <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 15px;">
+                <span style="background: #e0f7fa; color: #00838f; padding: 5px 12px; border-radius: 20px; font-weight: bold; font-size: 12px; text-transform: uppercase;">Mobility Support</span>
+                <span style="background: #f3e5f5; color: #4a148c; padding: 5px 12px; border-radius: 20px; font-weight: bold; font-size: 12px;">Direct Relief Initiative</span>
+                <span style="color: #666; font-size: 13px; font-weight: 500;"><i class="fa-regular fa-calendar"></i> Ongoing Deployment</span>
+            </div>
+
+            <h2 style="color: #00838f; margin: 0 0 15px 0; font-size: 22px; line-height: 1.4;">
+                Customized Wheelchair Distribution & Mobility Empowerment Program
+            </h2>
+
+            <p style="color: #555; line-height: 1.7; font-size: 15px; margin-bottom: 25px;">
+                To restore dignity, structural independence, and active community participation, <strong>Muscular Dystrophy Pakistan (MDP)</strong> manages a dedicated mobility equipment pipeline. We specialize in providing high-quality, customized wheelchairs engineered specifically for the unique physical requirements of children and young adults navigating Muscular Dystrophy, ensuring optimal ergonomic posture and long-term physical comfort.
+            </p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 30px;">
+                
+                <div style="background: #f0fdfa; border: 1px solid #ccfbf1; border-radius: 8px; padding: 20px; text-align: center;">
+                    <div style="color: #0d9488; font-size: 28px; font-weight: bold; margin-bottom: 5px;">Customized</div>
+                    <div style="color: #111827; font-weight: 600; font-size: 15px; margin-bottom: 4px;">Ergonomic Fit</div>
+                    <div style="color: #6b7280; font-size: 13px;">Tailored to individual patient posture needs</div>
+                </div>
+
+                <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; text-align: center;">
+                    <div style="color: #0f172a; font-size: 28px; font-weight: bold; margin-bottom: 5px;">Active</div>
+                    <div style="color: #111827; font-weight: 600; font-size: 15px; margin-bottom: 4px;">Socio-Inclusion</div>
+                    <div style="color: #6b7280; font-size: 13px;">Enabling smooth access to education & social life</div>
+                </div>
+
+                <div style="background: #fdf2f8; border: 1px solid #fce7f3; border-radius: 8px; padding: 20px; text-align: center;">
+                    <div style="color: #db2777; font-size: 28px; font-weight: bold; margin-bottom: 5px;">Pediatric</div>
+                    <div style="color: #111827; font-weight: 600; font-size: 15px; margin-bottom: 4px;">& Youth Focus</div>
+                    <div style="color: #6b7280; font-size: 13px;">Prioritizing young rare disease warriors</div>
+                </div>
+
+            </div>
+
+            <div style="text-align: center; border-top: 1px dashed #e2e8f0; padding-top: 25px; margin-top: 10px;">
+                <p style="color: #4b5563; font-size: 14px; margin: 0 0 15px 0; font-weight: 500;">
+                    Help us provide the gift of mobility to an affected child awaiting a customized wheelchair.
+                </p>
+                <a href="donation" style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: #00838f; color: white; text-decoration: none; padding: 14px 32px; font-weight: bold; font-size: 15px; border-radius: 30px; box-shadow: 0 4px 12px rgba(0, 131, 143, 0.25); transition: all 0.3s ease;">
+                    <i class="fa-solid fa-heart" style="color: #f43f5e;"></i> Sponsor a Mobility Wheelchair
+                </a>
+            </div>
+
+        </div>
+
+
+    <!-- ==================== BACK BUTTON ==================== -->
+    <div style="text-align: center; margin: 40px 0 60px 0;">
+        <a href="index.html" style="display: inline-block; background-color: #0d47a1; color: #ffffff; padding: 12px 35px; font-size: 16px; font-weight: bold; text-decoration: none; border-radius: 30px; box-shadow: 0 4px 12px rgba(13,71,161,0.2);">
+            <i class="fa-solid fa-arrow-left"></i> Back to Home
+        </a>
+    </div>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer style="background: #111; color: #aaa; text-align: center; padding: 20px; font-size: 14px;">
+        <p style="margin: 0;">&copy; 2026 Muscular Dystrophy Pakistan (MDP). All Rights Reserved.</p>
+    </footer>
+
+    <!-- ==================== MOBILE MENU INTERACTION SCRIPT ==================== -->
+    <script>
+        function toggleSideMenu() {
+            var menu = document.getElementById("mobileMenu");
+            if (menu.classList.contains("active")) {
+                menu.classList.remove("active");
+            } else {
+                menu.classList.add("active");
+            }
+        }
+    </script>
+
+</body>
+</html>

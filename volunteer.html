@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer Registration | MDP Pakistan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: #f1f5f9; color: #1e293b; line-height: 1.6; }
+        .container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 40px 20px; display: flex; justify-content: center; }
+        header { background: #ffffff; box-shadow: 0 2px 15px rgba(0, 0, 0, 0.04); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #e2e8f0; width: 100%; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 12px 30px; }
+        .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .logo-wrapper { display: flex; align-items: center; justify-content: center; height: 42px; width: 42px; overflow: hidden; }
+        .main-logo { height: 100%; width: 100%; object-fit: contain; }
+        .brand-text { font-size: 18px; font-weight: 700; color: #004aad; white-space: nowrap; }
+        .desktop-nav { display: flex; align-items: center; gap: 15px; }
+        .desktop-nav a { text-decoration: none; color: #475569; font-weight: 600; font-size: 0.85rem; transition: color 0.2s; }
+        .desktop-nav a:hover, .desktop-nav a.active { color: #004aad; }
+        .menu-trigger-btn { background: none; border: none; font-size: 1.4rem; color: #004aad; cursor: pointer; padding: 5px; display: none; }
+        @media (max-width: 1024px) { .desktop-nav a { display: none; } .menu-trigger-btn { display: inline-block; } .nav-container { padding: 12px 20px; } }
+        @media (max-width: 480px) { .logo-wrapper { height: 36px; width: 36px; } .brand-text { font-size: 16px; } }
+        #side-drawer { position: fixed; top: 0; right: -300px; width: 290px; height: 100vh; background: #ffffff; z-index: 9999; transition: 0.3s ease-in-out; padding: 30px 25px; display: none; overflow-y: auto; box-shadow: -4px 0 20px rgba(0,0,0,0.08); }
+        .drawer-close-btn { display: flex; justify-content: flex-end; width: 100%; margin-bottom: 10px; }
+        .drawer-close-btn button { border: none; background: none; font-size: 1.6rem; cursor: pointer; color: #475569; }
+        .drawer-links { display: flex; flex-direction: column; gap: 22px; margin-top: 10px; }
+        .drawer-links a { text-decoration: none; color: #334155; font-weight: 500; font-size: 1.05rem; display: flex; align-items: center; gap: 14px; transition: color 0.2s; }
+        .drawer-links a i { font-size: 1.15rem; width: 24px; color: #475569; }
+        .drawer-links a:hover, .drawer-links a.active { color: #004aad; }
+        .drawer-links a:hover i, .drawer-links a.active i { color: #004aad; }
+        .drawer-links a.donate-link { color: #2A7DE1; font-weight: 700; }
+        .drawer-links a.donate-link i { color: #2A7DE1; }
+        .accessibility-dropdown { margin-top: 30px; border-top: 1px solid #f1f5f9; padding-top: 25px; }
+        .acc-trigger { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 12px 15px; border: 1px solid #e2e8f0; background: #f8fafc; border-radius: 8px; font-weight: 500; color: #475569; cursor: pointer; font-size: 0.95rem; }
+        .acc-panel { display: none; padding: 12px 5px; flex-direction: column; gap: 10px; }
+        .acc-panel button { width: 100%; padding: 10px; border: 1px solid #cbd5e1; background: #ffffff; border-radius: 6px; cursor: pointer; font-weight: 600; color: #0f172a; text-align: left; font-size: 0.85rem; }
+        .acc-panel button:hover { background: #f1f5f9; }
+        .drawer-socials { display: flex; justify-content: center; gap: 20px; margin-top: 40px; padding-bottom: 20px; }
+        .drawer-socials a { color: #64748b; font-size: 1.3rem; transition: color 0.2s; }
+        .drawer-socials a:hover { color: #004aad; }
+        .form-container { background: white; padding: 35px 30px; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.04); max-width: 550px; width: 100%; border-top: 5px solid #004aad; }
+        .form-container h2 { margin-bottom: 25px; color: #004aad; font-size: 24px; font-weight: 700; text-align: center; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; color: #334155; font-size: 14px; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px; box-sizing: border-box; font-size: 15px; background-color: #f8fafc; transition: all 0.2s; }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: #004aad; outline: none; background-color: #fff; box-shadow: 0 0 0 3px rgba(0, 74, 173, 0.1); }
+        .submit-btn { width: 100%; padding: 14px; background-color: #004aad; color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; transition: background 0.2s; }
+        .submit-btn:hover { background-color: #00357a; }
+        .submit-btn:disabled { background-color: #94a3b8; cursor: not-allowed; }
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); display: flex; justify-content: center; align-items: center; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; z-index: 9999; }
+        .modal-overlay.active { opacity: 1; pointer-events: auto; }
+        .success-card { background: white; padding: 40px 30px; border-radius: 20px; text-align: center; max-width: 420px; width: 90%; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); border-top: 6px solid #22c55e; transform: scale(0.8); transition: transform 0.3s ease; }
+        .modal-overlay.active .success-card { transform: scale(1); }
+        .success-icon { width: 65px; height: 65px; background: #dcfce7; color: #22c55e; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 32px; margin: 0 auto 20px; font-weight: bold; }
+        .success-card h2 { color: #1e293b; margin: 0 0 12px 0; font-size: 24px; }
+        .success-card p { color: #64748b; font-size: 15px; margin: 0 0 30px 0; line-height: 1.6; }
+        .close-popup-btn { width: auto; display: inline-block; padding: 12px 35px; background-color: #22c55e; color: white; border: none; border-radius: 8px; font-size: 15px; font-weight: 600; text-decoration: none; cursor: pointer; transition: background 0.2s; }
+        .close-popup-btn:hover { background-color: #16a34a; }
+        body.high-contrast { background-color: #000000 !important; color: #ffffff !important; }
+        body.high-contrast header, body.high-contrast #side-drawer { background: #121212 !important; color: #ffffff !important; border-color: #ffffff !important; }
+        body.high-contrast a, body.high-contrast .brand-text { color: #ffff00 !important; }
+        body.large-text { font-size: 19px !important; }
+        body.large-text .drawer-links a { font-size: 1.25rem !important; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="brand">
+                <div class="logo-wrapper"><img src="logo.png" alt="MDP Logo" class="main-logo"></div>
+                <span class="brand-text">MDP Pakistan</span>
+            </a>
+            <nav class="desktop-nav">
+                <a href="index.html">Home</a><a href="projects.html">Our Projects</a><a href="news.html">News & Updates</a><a href="about.html">About Us</a><a href="types.html">Classifications</a><a href="registration.html">Registry Dashboard</a><a href="donation.html" style="color: #2A7DE1; font-weight: 700;">Donate</a>
+                <a href="volunteer.html">Volunteer</a>
+                <a href="contact.html">Contact</a>
+                <button class="menu-trigger-btn" onclick="toggleSideMenu()"><i class="fa-solid fa-bars"></i></button>
+            </nav>
+        </div>
+    </header>
+
+    <div id="side-drawer">
+        <div class="drawer-close-btn"><button onclick="toggleSideMenu()"><i class="fa-solid fa-xmark"></i></button></div>
+        <div class="drawer-links">
+            <a href="index.html"><i class="fa-solid fa-house"></i> Home</a><a href="about.html"><i class="fa-solid fa-circle-info"></i> about us</a><a href="types.html"><i class="fa-solid fa-hourglass-half"></i> Classifications</a><a href="registration.html"><i class="fa-solid fa-database"></i> Registry Dashboard</a><a href="projects.html"><i class="fa-solid fa-folder"></i> our projects</a><a href="news.html"><i class="fa-solid fa-newspaper"></i> News & Updates</a><a href="donation.html" class="donate-link"><i class="fa-solid fa-heart"></i> Donate Now</a>
+                        <a href="volunteer.html"style="text-decoration: none; color:#333; font-weight: 500; font-size: 1rem;"><i class="fa-solid fa-handshake"></i> Volunteer</a>
+            <a href="contact.html"><i class="fa-solid fa-envelope"></i> Contact Us</a>
+        </div>
+        <div class="accessibility-dropdown">
+            <div class="acc-trigger" onclick="toggleSettingsDropdown()"><span><i class="fa-solid fa-sliders" style="margin-right: 8px;"></i> Accessibility Settings</span><i id="settings-chevron" class="fa-solid fa-chevron-down" style="transition: 0.2s;"></i></div>
+            <div id="settings-panel" class="acc-panel">
+                <button onclick="toggleContrast()"><i class="fa-solid fa-circle-half-stroke"></i> High Contrast Toggle</button><button onclick="maximizeFont()"><i class="fa-solid fa-text-height"></i> Maximize Font Size</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="form-container">
+            <h2>Volunteer Registration</h2>
+            <form id="volunteerForm">
+                <div class="form-group"><label>Full Name</label><input type="text" name="name" required placeholder="Enter your full name"></div>
+                <div class="form-group"><label>Email Address</label><input type="email" name="email" required placeholder="name@example.com"></div>
+                <div class="form-group"><label>Phone Number</label><input type="tel" name="phone" required placeholder="03001234567"></div>
+                <div class="form-group">
+                    <label>Area of Interest</label>
+<select name="interest" required>
+    <option value="">Select Domain</option>
+    <option value="Media & Digital Communications">Media & Digital Communications</option>
+    <option value="Community Outreach & Support">Community Outreach & Support</option>
+    <option value="Advocacy & Public Awareness">Advocacy & Public Awareness</option>
+    <option value="Event Management & Fundraising">Event Management & Fundraising</option>
+    <option value="Research & Data Management">Research & Data Management</option>
+</select>
+
+                </div>
+                <div class="form-group"><label>Message</label><textarea name="message" rows="3" placeholder="Tell us how you would like to help..."></textarea></div>
+                <button type="submit" id="submitBtn" class="submit-btn">Submit Application</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- POPUP CARD WITH ENGLISH TEXT -->
+    <div class="modal-overlay" id="successModal">
+        <div class="success-card">
+            <div class="success-icon">✓</div>
+            <h2>Thank You!</h2>
+            <p>Thank you for submitting your form. The MDP Pakistan team will contact you shortly.</p>
+            <button type="button" class="close-popup-btn" onclick="closePopup()">Back to Home</button>
+        </div>
+    </div>
+    <script>
+        function toggleSideMenu() {
+            var drawer = document.getElementById('side-drawer');
+            if (drawer.style.display === 'block') { drawer.style.right = '-300px'; setTimeout(() => { drawer.style.display = 'none'; }, 300); }
+            else { drawer.style.display = 'block'; setTimeout(() => { drawer.style.right = '0px'; }, 10); }
+        }
+        function toggleSettingsDropdown() {
+            var panel = document.getElementById('settings-panel');
+            var chevron = document.getElementById('settings-chevron');
+            if (panel.style.display === 'flex') { panel.style.display = 'none'; chevron.style.transform = 'rotate(0deg)'; }
+            else { panel.style.display = 'flex'; chevron.style.transform = 'rotate(180deg)'; }
+        }
+        function toggleContrast() { document.body.classList.toggle('high-contrast'); }
+        function maximizeFont() { document.body.classList.toggle('large-text'); }
+
+        document.getElementById('volunteerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var btn = document.getElementById('submitBtn');
+            btn.innerText = "Submitting...";
+            btn.disabled = true;
+
+            var scriptURL = "https://script.google.com/macros/s/AKfycbxNCKXDwQuLQyrJqe96FUZMcFekf_lgnzKGXFV4wJIM87LwrykvC4ML5ns0EQG2iFCV/exec"; 
+
+            var formData = new FormData(this);
+            var searchParams = new URLSearchParams();
+            for (var pair of formData.entries()) { searchParams.append(pair[0], pair[1]); }
+
+            fetch(scriptURL, {
+                method: 'POST',
+                body: searchParams,
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+            })
+            .then(response => {
+                document.getElementById('volunteerForm').reset();
+                document.getElementById('successModal').classList.add('active');
+            })
+            .catch(error => {
+                document.getElementById('volunteerForm').reset();
+                document.getElementById('successModal').classList.add('active');
+            })
+            .finally(() => {
+                btn.innerText = "Submit Application";
+                btn.disabled = false;
+            });
+        });
+
+        function closePopup() {
+            document.getElementById('successModal').classList.remove('active');
+            window.location.href = "index.html"; 
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muscular Dystrophy Pakistan (MDP)</title>
+    
+    <!-- FontAwesome & Google Fonts Integration -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-blue: #2A7DE1;
+            --primary-dark: #1A5CB8;
+            --bg-white: #FFFFFF;
+            --light-blue: #E8F1FC;
+            --text-dark: #333333;
+            --btn-green: #28A745;
+            --accent-red: #D32F2F;
+            --orange-alert: #FFA000;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-white);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Top Accessibility & Social Bar */
+        .top-bar {
+            background-color: #111;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .accessibility-controls button {
+            background: #333;
+            color: white;
+            border: none;
+            padding: 5px 12px;
+            margin-right: 5px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .accessibility-controls button:hover {
+            background: var(--primary-blue);
+        }
+
+        .top-social-links a {
+            color: white;
+            margin-left: 15px;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+        .top-social-links a:hover { color: var(--primary-blue); }
+
+        /* Header & Navigation Area */
+        header {
+            background-color: var(--bg-white);
+            border-bottom: 4px solid var(--primary-blue);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .logo-img {
+            width: 75px;        /* Logo ka size 55px se bada kar ke 75px kar diya */
+            height: 75px;       /* Logo ka size 55px se bada kar ke 75px kar diya */
+            object-fit: contain;
+            background: none;   /* Background color bilkul khatam kar diya */
+            border: none;       /* Gol border line bhi khatam kar di */
+            border-radius: 0;   /* Shape ko natural rakha */
+        }
+
+
+        .brand-name h1 {
+            margin: 0;
+            font-size: 1.3rem;
+            color: var(--primary-blue);
+            font-weight: 700;
+        }
+        .brand-name p {
+            margin: 0;
+            font-size: 0.8rem;
+            color: #666;
+            letter-spacing: 1px;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        nav a:hover { color: var(--primary-blue); }
+
+        /* Premium Hero Section */
+        .hero {
+            background: linear-gradient(rgba(20, 50, 90, 0.85), rgba(42, 125, 225, 0.85)), url('https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+            padding: 100px 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h2 {
+            font-size: 2.4rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px auto;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .section-block {
+            margin-bottom: 60px;
+            scroll-margin-top: 110px;
+        }
+
+        .section-block h2 {
+            color: var(--primary-dark);
+            font-size: 1.8rem;
+            border-bottom: 3px solid var(--light-blue);
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            align-items: center;
+        }
+
+        .about-img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .grid-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        .type-card {
+            background-color: var(--light-blue);
+            padding: 25px;
+            border-radius: 8px;
+            border-top: 4px solid var(--primary-blue);
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
+
+        .type-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(42, 125, 225, 0.15);
+            background-color: #fff;
+        }
+
+        .card-icon-shape {
+            width: 45px;
+            height: 45px;
+            background: var(--primary-blue);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .type-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary-dark);
+            font-size: 1.2rem;
+        }
+
+        .click-hint {
+            font-size: 0.85rem;
+            color: var(--primary-blue);
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 15px;
+        }
+
+        .registration-box {
+            background: linear-gradient(135deg, #ffffff 0%, #f4f8fd 100%);
+            border: 2px solid var(--light-blue);
+            border-radius: 12px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        .registration-box p {
+            max-width: 750px;
+            margin: 0 auto 25px auto;
+            font-size: 1.1rem;
+            color: #444;
+        }
+
+        .btn-register {
+            background-color: var(--btn-green);
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: inline-block;
+            box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+            transition: all 0.2s ease;
+        }
+
+        .btn-register:hover {
+            background-color: #218838;
+            transform: scale(1.03);
+        }
+
+        .donation-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .donation-info-card {
+            background: #fff;
+            border: 1px solid #e1e8ed;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+        }
+
+        .bank-details-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-size: 0.95rem;
+        }
+
+        .bank-details-table th, .bank-details-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .bank-details-table th {
+            background-color: var(--light-blue);
+            color: var(--primary-dark);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(10, 30, 60, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            backdrop-filter: blur(4px);
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 35px;
+            border-radius: 12px;
+            max-width: 650px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #aaa;
+            transition: 0.2s;
+        }
+        .close-modal:hover { color: var(--accent-red); }
+
+        .modal-content h3 {
+            color: var(--primary-dark);
+            font-size: 1.5rem;
+            margin-top: 0;
+            border-bottom: 3px solid var(--light-blue);
+            padding-bottom: 8px;
+        }
+
+        .info-badge-bar {
+            display: flex;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .info-badge {
+            background: var(--light-blue);
+            color: var(--primary-dark);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .visual-shape-line {
+            height: 6px;
+            width: 100%;
+            background: #eee;
+            border-radius: 3px;
+            margin: 10px 0 20px 0;
+            overflow: hidden;
+        }
+
+        .visual-shape-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-red));
+            width: 75%;
+        }
+
+        .modal-section-box {
+            background: #f8fafc;
+            border-left: 4px solid var(--primary-blue);
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 0 6px 6px 0;
+        }
+
+        .modal-section-box.diagnosis { border-left-color: var(--orange-alert); }
+        .modal-section-box.treatment { border-left-color: var(--btn-green); }
+
+        .modal-section-box h4 {
+            margin: 0 0 5px 0;
+            font-size: 1rem;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        footer {
+            background-color: #111;
+            color: #bbb;
+            padding: 50px 20px 20px 20px;
+            margin-top: 60px;
+            font-size: 0.9rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .footer-col h3 {
+            color: white;
+            border-bottom: 2px solid #222;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .footer-col a {
+            color: #999;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            transition: 0.2s;
+        }
+        .footer-col a:hover { color: white; }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid #222;
+            padding-top: 25px;
+            margin-top: 40px;
+            color: #666;
+        }
+
+        .high-contrast { background-color: #000 !important; color: #fff !important; }
+        .high-contrast :not(button):not(a) { background-color: #000 !important; color: #fff !important; }
+        .large-text { font-size: 1.25rem !important; }
+                /* CSS for Responsive Navigation Layout */
+        .desktop-nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .desktop-nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+        .desktop-nav a:hover {
+            color: #1A5CB8;
+        }
+        .menu-trigger-btn {
+            background: none;
+            border: none;
+            font-size: 1.4rem;
+            color: #1A5CB8;
+            cursor: pointer;
+            padding: 5px;
+            display: none; /* Desktop par hidden rahega */
+        }
+/* --- DESKTOP WIDE GRID RE-FIX --- */
+@media (min-width: 769px) {
+    /* Vision aur Mission ko full wide kiya */
+    .desktop-row-layout {
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 30px !important;
+        width: 100% !important;
+        max-width: 1600px !important;
+        margin: 0 auto !important;
+    }
+    .desktop-row-layout > div {
+        flex: 1 !important;
+    }
+
+    /* What We Do - 4 Columns Ultra Wide */
+    .desktop-grid-4-col {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 25px !important;
+        width: 100% !important;
+        max-width: 1600px !important;
+        margin: 0 auto 40px auto !important;
+    }
+
+    /* Understanding MD - 3 Columns Ultra Wide */
+    .desktop-grid-3-col {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 30px !important;
+        width: 100% !important;
+        max-width: 1600px !important;
+        margin: 0 auto 35px auto !important;
+    }
+}
+
+/* 📱 Mobile Screens Rules */
+@media (max-width: 768px) {
+    .desktop-nav a {
+        display: none !important;
+    }
+    .menu-trigger-btn {
+        display: inline-block !important;
+    }
+
+    .container, 
+    div[style*="margin: 40px auto"], 
+    div[style*="max-width: 1100px"],
+    div[style*="max-width: 1350px"],
+    div[style*="max-width: 1600px"] {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 20px 12px !important;
+        box-sizing: border-box !important;
+    }
+
+    .desktop-row-layout,
+    .desktop-grid-4-col,
+    .desktop-grid-3-col {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        gap: 15px !important;
+        padding: 0 !important;
+    }
+
+    .desktop-row-layout > div,
+    .desktop-grid-4-col > div,
+    .desktop-grid-3-col > div {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .about-section, 
+    .about-section > div, 
+    section, 
+    section > div {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        box-sizing: border-box !important;
+    }
+}
+
+/* --- Global Desktop Content Ultra-Wide Fix --- */
+.container {
+    width: 100% !important;
+    max-width: 1600px !important; /* Pura inner content 1600px tak open ho jayega */
+    margin: 0 auto !important;
+    padding: 40px 20px !important;
+    box-sizing: border-box !important;
+}
+
+/* In line styles ko overwrite karne ke liye jo outer sections ko bacha rahe hain */
+div[style*="max-width: 1100px"], 
+div[style*="max-width: 1350px"] {
+    max-width: 1600px !important;
+    width: 100% !important;
+}
+
+.nav-container {
+    max-width: 1600px !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+}
+
+.footer-container, footer .container {
+    max-width: 1600px !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+}
+
+
+    </style>
+</head>
+<body>
+    <!-- Clean & Single Top Navigation Bar -->
+    <!-- Smart & Responsive Top Navigation Bar -->
+    <header style="background: #fff; display: flex; justify-content: space-between; align-items: center; padding: 12px 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: relative; z-index: 999;">
+        <!-- Brand Identity Element -->
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <img src="logo.png" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=100&q=80';" style="width: 50px; height: 50px; object-fit: contain;" alt="MDP">
+            <div>
+                <h1 style="margin:0; font-size: 1.1rem; color: #1A5CB8; font-weight:700; line-height:1.2;">MDP Pakistan</h1>
+                <small style="color:#666; font-size:0.75rem;">musculardystrophypk.org</small>
+            </div>
+        </div>
+
+        <!-- Dynamic Navigation Container -->
+        <nav class="desktop-nav">
+            <!-- These are visible globally on Desktop, but collapse instantly on Mobile -->
+    <a href="index.html">Home</a>
+    <a href="projects.html">Our Projects</a>
+    <a href="news.html">News & Updates</a>
+<a href="about.html" style="text-decoration: none; font-weight: 600;">About Us</a>
+
+    <a href="types.html">Classifications</a>
+    <a href="registration.html">Registry Dashboard</a>
+    <a href="donation.html" style="color: #2A7DE1; font-weight: 700;">Donate</a>
+    <a href="volunteer.html">Volunteer</a>
+        <a href="gallery.html">gallery</a>
+    <a href="contact.html">Contact</a>
+
+            
+            <!-- This icon triggers the unified sidebar interaction ecosystem on small displays -->
+            <button class="menu-trigger-btn" onclick="toggleSideMenu()">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+    <!-- Corrected Fixed Side Drawer (Ab Yeh Shuru Se Chupa Rahega) -->
+    <div id="side-drawer" style="position: fixed; top: 0; right: -300px; width: 280px; height: 100vh; background: #ffffff; box-shadow: -5px 0 25px rgba(0,0,0,0.15); z-index: 9999; transition: 0.3s ease; padding: 25px 20px; box-sizing: border-box; overflow-y: auto; display: none;">
+        
+        <!-- Close Button -->
+        <div style="display: flex; justify-content: flex-end; margin-bottom: 25px;">
+            <button onclick="toggleSideMenu()" style="background: none; border: none; font-size: 1.5rem; color: #666; cursor: pointer;">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <!-- Links Stack Inside Mobile Menu -->
+        <div style="display: flex; flex-direction: column; gap: 18px; border-bottom: 1px solid #eee; padding-bottom: 20px; margin-bottom: 20px;">
+            <a href="index.html" onclick="toggleSideMenu()" style="text-decoration: none; color: #333; font-weight: 500; font-size: 1rem;"><i class="fa-solid fa-house"></i> Home</a>
+            <a href="about.html" onclick="toggleSideMenu()" style="text-decoration: none; color: #333; font-weight: 500; font-size: 1rem;"><i class="fa-solid fa-circle-info"></i> about us</a>
+
+            <a href="types.html" onclick="toggleSideMenu()" style="text-decoration: none; color: #333; font-weight: 500; font-size: 1rem;"><i class="fa-solid fa-dna"></i> Classifications</a>
+<a href="registration.html" onclick="toggleSideMenu()" style="text-decoration: none; color: #333; font-weight: 500; font-size: 1rem;">
+    <i class="fa-solid fa-database"></i> Registry Dashboard
+</a>
+<a href="projects.html" onclick="toggleSideMenu()" style="text-decoration: none; color: #333; font-weight: 500; font-size: 1rem;"><i class="fa-solid fa-folder-open"></i> our projects</a>
+
+<a href="news.html" onclick="toggleSideMenu()" style="text-decoration: none; color: #333; font-weight: 500; font-size: 1rem;"><i class="fa-solid fa-newspaper"></i> News & Updates</a>
+
+
+            <a href="donation.html" style="text-decoration: none; color: #2A7DE1; font-weight: 700; font-size: 1.1rem;"><i class="fa-solid fa-heart"></i> Donate Now</a>
+            <a href="volunteer.html"style="text-decoration: none; color:#333; font-weight: 500; font-size: 1rem;"><i class="fa-solid fa-handshake"></i> Volunteer</a>
+            <a href="gallery.html" style="text-decoration: none; color: #333; font-weight: 500; font-size: 1rem;"class="active"><i class="fa-solid fa-image"></i> Gallery</a>
+            <a href="contact.html" style="text-decoration: none; color: #333; font-weight: 500; font-size: 1rem;"><i class="fa-solid fa-envelope"></i> Contact Us</a>
+        </div>
+
+        <!-- Accessibility Inside Side Menu -->
+        <div>
+            <button onclick="toggleSettingsDropdown()" style="width: 100%; display: flex; justify-content: space-between; align-items: center; background: #f4f7fa; border: 1px solid #e1e8ed; padding: 12px; border-radius: 6px; font-weight: 600; color: #444; cursor: pointer;">
+                <span><i class="fa-solid fa-sliders"></i> Accessibility Settings</span>
+                <i id="settings-chevron" class="fa-solid fa-chevron-down" style="transition: 0.2s;"></i>
+            </button>
+            
+            <div id="settings-panel" style="display: none; padding: 15px 10px 5px 10px; background: #fafafa; border: 1px solid #e1e8ed; border-top: none; border-radius: 0 0 6px 6px; flex-direction: column; gap: 12px;">
+                <button class="adj-btn" onclick="toggleContrast()" style="width:100%; padding: 10px; background: #333; color:#fff; border:none; border-radius:4px; font-weight:600; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px;">
+                    <i class="fa-solid fa-circle-half-stroke"></i> Contrast Toggle
+                </button>
+                <button class="adj-btn" onclick="maximizeFont()" style="width:100%; padding: 10px; background: #2A7DE1; color:#fff; border:none; border-radius:4px; font-weight:600; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px;">
+                    <i class="fa-solid fa-text-height"></i> Maximize Font
+                </button>
+            </div>
+        </div>
+
+        <!-- Social Icons Inside Side Menu Footer -->
+        <div style="display: flex; gap: 15px; justify-content: center; margin-top: 50px; color: #888; font-size: 1.2rem;">
+            <a href="https://www.facebook.com/share/18mSGQ3L6U/" style="color:inherit;"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://www.instagram.com/musculardystrophypakistan" style="color:inherit;"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/ghulam-ali-9b2a74101" style="color:inherit;"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://x.com/muscular_p121" style="color:inherit;"><i class="fa-brands fa-twitter"></i></a>
+        </div>
+    </div>
+
+    <!-- Overlay curtain background shadow -->
+    <div id="menu-overlay" onclick="toggleSideMenu()" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.4); z-index: 998;"></div>
+
+
+
+    <section class="hero" id="home">
+        <h2>Muscular Dystrophy Pakistan (MDP)</h2>
+<p style="font-size: 18px; line-height: 1.6; max-width: 600px; margin: 20px auto; color: #f8f9fa;">
+    A dedicated organization working to raise awareness, provide support, and advocate for individuals affected by muscular dystrophy (MD) and other neuromuscular disorders in Pakistan.
+</p>
+
+    </section>
+
+    <div class="container">
+
+<section class="about-section" style="padding: 60px 20px; background-color: #ffffff; text-align: center;">
+    <div style="max-width: 1000px; margin: 0 auto;">
+        
+        <!-- MAIN HEADING -->
+        <h2 style="color: #0d47a1; font-size: 32px; font-weight: bold; margin-bottom: 40px; font-family: 'DM Sans', sans-serif;">
+            About Our Organization
+        </h2>
+
+        <div style="display: flex; flex-direction: column; gap: 30px; text-align: left;">
+            
+    <!-- SINGLE CLICKABLE LIVE TICKER BANNER -->
+    <a href="news.html" style="display: flex; align-items: center; background: #0d47a1; color: #ffffff; text-decoration: none; padding: 10px 0; border-radius: 6px; font-family: 'DM Sans', sans-serif; margin-bottom: 25px; transition: background 0.3s ease; width: 100%; box-sizing: border-box; overflow: hidden;">
+        <!-- Static Badge -->
+        <span style="background: #27ae60; color: white; padding: 5px 12px; border-radius: 4px; font-weight: bold; font-size: 14px; display: inline-flex; align-items: center; gap: 5px; margin-left: 10px; margin-right: 15px; white-space: nowrap; z-index: 10; box-shadow: 3px 0 10px rgba(0,0,0,0.2);">
+            📢 LATEST UPDATES:
+        </span>
+        
+        <!-- Ghumne wali patti container -->
+        <div style="width: 100%; overflow: hidden; white-space: nowrap; position: relative;">
+            <div style="display: inline-block; padding-left: 10px; animation: mdpTicker 25s linear infinite; font-size: 15px; font-weight: 500;">
+<span style="margin-right: 60px;">🔹 1. LGMD Awareness Day 2026 Preparations Underway (30 September 2026)</span>
+                <span style="margin-right: 60px;">🔹 2. Newborn Screening Pilot Project in Taluka Thul, District Jacobabad</span>
+                <span style="margin-right: 60px;">🔹 3. Expanding International Partnerships and Memberships</span>
+                <span style="margin-right: 60px;">🔹 4. Rare Disease Day 2025 Successfully Observed (28 February 2025)</span>
+                <span style="margin-right: 60px;">🔹 5. Awareness Day 2024 Highlights and Community Engagement</span>
+                <span style="margin-right: 60px;">🔹 6. Volunteer Registration Open - Join Our Campaigns Now!</span>
+
+            </div>
+        </div>
+    </a>
+
+</div>
+
+<style>
+@keyframes mdpTicker {
+    0% { transform: translate3d(100%, 0, 0); }
+    100% { transform: translate3d(-100%, 0, 0); }
+}
+    @media (min-width: 769px) {
+        /* Vision aur Mission ke wrapper container ko full wide force karne ke liye */
+        div.desktop-row-layout {
+            max-width: 1600px !important;
+            width: 100% !important;
+            margin: 0 auto !important;
+        }
+    }
+/* --- Overriding all narrow wrappers to force full width --- */
+body, html {
+    width: 100% !important;
+    overflow-x: hidden !important;
+}
+
+/* 💻 Sirf Desktop Screens Par Wide Hoga (769px se upar) */
+@media (min-width: 769px) {
+    .wide-content-wrapper, 
+    .wide-content-wrapper + section,
+    section[style*="background-color: #f9f9f9"], 
+    section[style*="background-color:#f9f9f9"] {
+        width: 100% !important;
+        max-width: 1350px !important; /* Aap isko 1600px bhi kar sakte hain agar mazeed wide chahiye */
+        margin: 0 auto !important;
+        box-sizing: border-box !important;
+    }
+
+    /* What We Do ke andar jo limit thi, use desktop par khatam karo */
+    section[style*="background-color"] > div {
+        max-width: 100% !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        padding: 0 20px !important;
+    }
+}
+
+</style>
+
+<div class="desktop-row-layout" style="display: flex; flex-direction: column; gap: 30px; text-align: left; width: 100%;">
+            
+    <!-- VISION BOX -->
+    <div style="background: #f4f9f4; border-left: 5px solid #27ae60; padding: 25px; border-radius: 4px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+        <h3 style="color: #27ae60; font-size: 22px; margin-top: 0; display: flex; align-items: center; gap: 10px;">
+            🎯 Our Vision
+        </h3>
+        <p style="color: #333333; font-size: 16px; line-height: 1.6; margin-bottom: 0;">
+            To create a world where every individual affected by Muscular Dystrophy (MD) and related neuromuscular disorders in Pakistan has access to timely diagnosis, appropriate care, inclusive education, and opportunities for an improved quality of life.
+        </p>
+    </div>
+
+    <!-- MISSION BOX -->
+    <div style="background: #f4f7fc; border-left: 5px solid #0d47a1; padding: 25px; border-radius: 4px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+        <h3 style="color: #0d47a1; font-size: 22px; margin-top: 0; display: flex; align-items: center; gap: 10px;">
+            🚀 Our Mission
+        </h3>
+        <p style="color: #333333; font-size: 16px; line-height: 1.6; margin-bottom: 0;">
+            Muscular Dystrophy Pakistan (MDP) is dedicated to advancing awareness, education, advocacy, and research related to muscular dystrophies and rare neuromuscular diseases across Pakistan. The organization works to empower patients, families, and healthcare professionals through community engagement, capacity building, and international collaboration.
+        </p>
+    </div>
+
+</div> <!-- Desktop Row Layout Ends Here -->
+
+
+<!-- WHAT WE DO / KEY INITIATIVES SECTION -->
+<section style="padding: 60px 0; background-color: #f9f9f9; text-align: center; font-family: 'DM Sans', sans-serif; width: 100%;">
+    <div style="width: 100%; max-width: 1350px; margin: 0 auto;">
+        
+        <h2 style="color: #0d47a1; font-size: 32px; font-weight: bold; margin-bottom: 20px;">
+            What We Do
+        </h2>
+        <p style="color: #555; font-size: 18px; line-height: 1.6; max-width: 800px; margin: 0 auto 40px auto;">
+            Muscular Dystrophy Pakistan (MDP) is actively engaged in transforming lives through structured healthcare initiatives, physical support systems, and nationwide advocacy campaigns.
+        </p>
+
+        <!-- PROJECTS SHORT OUTLINE GRID -->
+        <div class="desktop-grid-4-col" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-bottom: 40px; text-align: left; width: 100%;">
+            
+            <!-- Project 1 -->
+            <div style="background: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border-top: 4px solid #27ae60;">
+                <h4 style="color: #27ae60; margin: 0 0 10px 0; font-size: 16px;">📢 LGMD Awareness Day</h4>
+                <p style="color: #666; font-size: 14px; margin: 0;">Organized annually to spread awareness about Limb-Girdle Muscular Dystrophy and promote early diagnosis.</p>
+            </div>
+
+            <!-- Project 2 -->
+            <div style="background: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border-top: 4px solid #0d47a1;">
+                <h4 style="color: #0d47a1; margin: 0 0 10px 0; font-size: 16px;">🏃 Run for Rare Pakistan</h4>
+                <p style="color: #666; font-size: 14px; margin: 0;">A solidarity campaign bringing community steps together for rare disease warriors.</p>
+            </div>
+
+            <!-- Project 3 -->
+            <div style="background: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border-top: 4px solid #27ae60;">
+                <h4 style="color: #27ae60; margin: 0 0 10px 0; font-size: 16px;">🛠️ Tools and Resources</h4>
+                <p style="color: #666; font-size: 14px; margin: 0;">Developing and providing essential management tools and guidelines for registered patients.</p>
+            </div>
+
+            <!-- Project 4 -->
+            <div style="background: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border-top: 4px solid #0d47a1;">
+                <h4 style="color: #0d47a1; margin: 0 0 10px 0; font-size: 16px;">♿ Wheelchair Distribution</h4>
+                <p style="color: #666; font-size: 14px; margin: 0;">Providing physical mobility devices to restore independence and social inclusion.</p>
+            </div>
+
+        </div>
+
+        <!-- BUTTON CONNECTING TO PROJECTS.HTML -->
+        <a href="projects.html" style="display: inline-block; background-color: #0d47a1; color: #ffffff; padding: 14px 35px; font-size: 18px; font-weight: bold; text-decoration: none; border-radius: 30px; box-shadow: 0 4px 15px rgba(13,71,161,0.3); transition: 0.3s;">
+            Our Projects →
+        </a>
+        
+    </div>
+</section>
+
+
+        </div>
+    </div>
+</section>
+
+
+<!-- 📘 MUSCULAR DYSTROPHY OVERVIEW, DIAGNOSIS & TREATMENT SECTION -->
+<div class="container" style="max-width: 1100px; margin: 40px auto; padding: 0 20px;">
+    
+    <!-- Title Block -->
+    <div style="text-align: center; margin-bottom: 35px;">
+        <h2 style="color: #004aad; font-size: 26px; font-weight: 800; margin-bottom: 10px;">Understanding Muscular Dystrophy</h2>
+        <p style="color: #666666; max-width: 600px; margin: 0 auto; font-size: 15px;">A comprehensive clinical brief on progressive muscle degeneration, identification, and current therapeutic management.</p>
+    </div>
+
+    <!-- Main Content Cards Grid -->
+<div class="desktop-grid-3-col" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-bottom: 35px; width: 100%;">
+
+        
+        <!-- Overview Card -->
+        <div style="background: #ffffff; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); padding: 30px; border-top: 5px solid #004aad;">
+            <h3 style="color: #004aad; font-size: 18px; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                <i class="fa-solid fa-dna"></i> Disease Overview
+            </h3>
+            <p style="color: #444444; font-size: 14.5px; line-height: 1.6;">
+                Muscular Dystrophy (MD) refers to a group of genetic diseases characterized by progressive weakness and degeneration of the skeletal muscles that control movement. It is caused by mutations in genes responsible for the structure and function of proteins required for healthy muscle development.
+            </p>
+        </div>
+
+        <!-- Diagnosis Card (STARS REMOVED & CONVERTED TO HTML BOLD) -->
+        <div style="background: #ffffff; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); padding: 30px; border-top: 5px solid #0d9488;">
+            <h3 style="color: #0d9488; font-size: 18px; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                <i class="fa-solid fa-stethoscope"></i> Clinical Diagnosis
+            </h3>
+            <p style="color: #444444; font-size: 14.5px; line-height: 1.6;">
+                Early identification is critical. Diagnosis typically involves clinical evaluations combined with <strong>Enzyme Testing (CK levels)</strong>, <strong>Genetic Testing</strong> (to identify specific gene deletions), <strong>Electromyography (EMG)</strong>, and occasionally a <strong>Muscle Biopsy</strong> to observe dystrophin presence.
+            </p>
+        </div>
+
+        <!-- Treatment Card (STARS REMOVED & CONVERTED TO HTML BOLD) -->
+        <div style="background: #ffffff; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); padding: 30px; border-top: 5px solid #e65100;">
+            <h3 style="color: #e65100; font-size: 18px; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                <i class="fa-solid fa-kit-medical"></i> General Treatment
+            </h3>
+            <p style="color: #444444; font-size: 14.5px; line-height: 1.6;">
+                While there is currently no absolute cure, management focus relies heavily on multidisciplinary care: <strong>Corticosteroids</strong> to delay muscle weakness, <strong>Physical Therapy</strong> to maintain mobility, respiratory support devices, and orthopedic management to prevent joint contractures.
+            </p>
+        </div>
+
+    </div>
+
+    <!-- 🎯 BUTTON TO MAIN TYPES PAGE -->
+    <div style="text-align: center; margin-top: 20px;">
+        <a href="types.html" style="text-decoration: none; background: #004aad; color: white; padding: 12px 30px; border-radius: 6px; font-weight: 600; font-size: 15px; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 10px rgba(0,74,173,0.2); transition: all 0.3s ease;">
+            Explore Types of Muscular Dystrophy <i class="fa-solid fa-arrow-right"></i>
+        </a>
+    </div>
+
+</div>
+
+        <section class="section-block" id="register">
+            <h2>National Centralized Registry</h2>
+            <div class="registration-box">
+                <p>Building a centralized national database structure is vital to record statistical footprint mappings across Pakistan. Registration enables research bodies to coordinate with global rare disease frameworks, ensure specialized distribution channels, and track patient healthcare analytics cleanly.</p>
+                <a href="registration.html" target="_blank" class="btn-register">
+                    <i class="fa-solid fa-user-plus"></i> Register Now
+                </a>
+            </div>
+        </section>
+
+        <!-- Interactive Professional Donation Dashboard Section Layout -->
+        <!-- New Emotional & Action-Oriented Donation Banner for Home Page -->
+        <section class="section-block" id="donate">
+            <h2>Support Our Mission & Save Lives</h2>
+<div style="background: linear-gradient(135deg, #1A5CB8 0%, #2A7DE1 100%); color: white; padding: 45px 15px; border-radius: 12px; text-align: center; box-shadow: 0 6px 20px rgba(42, 125, 225, 0.25); box-sizing: border-box; width: 100%;">
+                <div style="font-size: 2.5rem; margin-bottom: 15px;"><i class="fa-solid fa-hand-holding-heart"></i></div>
+                <h3 style="margin: 0 0 15px 0; font-size: 1.8rem; font-weight: 700;">Your Generosity Can Provide Mobility and Hope</h3>
+                
+                <p style="max-width: 800px; margin: 0 auto 25px auto; font-size: 1.1rem; line-height: 1.7; opacity: 0.95;width: 100%; box-sizing: border-box;">
+                    Muscular Dystrophy functions as a progressive muscle-wasting condition that slowly takes away a child's ability to walk, move, and breathe. Lower-income families in Pakistan struggle heavily to afford genetic blood tests, specialized wheel chairs, or supportive physical rehabilitation manuals.
+                </p>
+                
+                <p style="max-width: 750px; margin: 0 auto 30px auto; font-size: 1rem; font-style: italic; opacity: 0.85; border-left: 3px solid #fff; padding-left: 15px; text-align: left;width: 100%; box-sizing: border-box;">
+                    * 100% of your Zakat and Sadakah goes directly toward procuring high-quality mobility aids and funding essential genomic tracking scans in collaboration with major medical institutes.
+                </p>
+
+                <!-- Button linking directly to the new page -->
+                <a href="donation.html" style="background-color: var(--btn-green); color: white; padding: 16px 45px; text-decoration: none; border-radius: 30px; font-weight: 700; font-size: 1.2rem; display: inline-block; box-shadow: 0 4px 15px rgba(40, 167, 69, 0.4); transition: 0.2s ease;">
+                    <i class="fa-solid fa-heart"></i> Click Here to Donate Now
+                </a>
+            </div>
+<section style="width: 100%; padding: 40px 0; text-align: center; background: #ffffff;">
+    <div style="width: 90%; max-width: 1100px; margin: 0 auto;">
+        <h2 style="font-size: 2rem; color: #004aad; margin-bottom: 40px;">Get Involved & See Our Impact</h2>
+        
+        <!-- Grid Container: Mobile par ek, Desktop par do -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+            
+            <!-- Volunteer Card -->
+            <div style="background: #f8fafc; padding: 30px; border-radius: 15px; border: 1px solid #e2e8f0;">
+                <i class="fa-solid fa-handshake-angle" style="font-size: 3rem; color: #27ae60; margin-bottom: 20px;"></i>
+                <h3>Become a Volunteer</h3>
+                <p style="color: #64748b; margin: 20px 0;">Help us in awareness campaigns, patient outreach, and community events.</p>
+                <a href="volunteer.html" style="background: #27ae60; color: white; padding: 12px 25px; border-radius: 6px; text-decoration: none; display: inline-block;">Apply Now</a>
+            </div>
+
+            <!-- Gallery Card -->
+            <div style="background: #f8fafc; padding: 30px; border-radius: 15px; border: 1px solid #e2e8f0;">
+                <i class="fa-solid fa-images" style="font-size: 3rem; color: #f39c12; margin-bottom: 20px;"></i>
+                <h3>View Our Gallery</h3>
+                <p style="color: #64748b; margin: 20px 0;">See the impact we've made, event highlights, and our community in action.</p>
+                <a href="gallery.html" style="background: #f39c12; color: white; padding: 12px 25px; border-radius: 6px; text-decoration: none; display: inline-block;">Explore Gallery</a>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+        </section>
+    </div>
+
+    <div id="detailsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h3 id="modalTitle">Disease Evaluation Blueprint</h3>
+            
+            <div class="info-badge-bar">
+                <span class="info-badge">Neuromuscular Risk Matrix</span>
+                <span class="info-badge" id="modalSubtext">Classification Node</span>
+            </div>
+
+            <p style="margin:5px 0; font-size:0.9rem; color:#666;">Estimated Condition Progression Speed Tracking Metric:</p>
+            <div class="visual-shape-line">
+                <div class="visual-shape-fill" id="modalBar"></div>
+            </div>
+
+            <div class="modal-section-box">
+                <h4><i class="fa-solid fa-triangle-exclamation" style="color:var(--accent-red)"></i> Core Symptoms Profile</h4>
+                <p id="modalSymptoms"></p>
+            </div>
+            
+            <div class="modal-section-box diagnosis">
+                <h4><i class="fa-solid fa-flask" style="color:var(--orange-alert)"></i> Clinical Diagnosis Methods</h4>
+                <p id="modalDiagnosis"></p>
+            </div>
+            
+            <div class="modal-section-box treatment">
+                <h4><i class="fa-solid fa-heart-pulse" style="color:var(--btn-green)"></i> Management & Therapeutic Care</h4>
+                <p id="modalTreatment"></p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>MDP Pakistan</h3>
+                <p>Committed to standardizing national rare disease support infrastructure frameworks across all administrative boundaries.
+            <h2>Contact Directory</h2>
+            <p><i class="fa-solid fa-location-dot" style="color:var(--accent-white)"></i> <strong>National Head Office:</strong> Bungalow 275, Sector 10, Sadiq Levina, Opposite Kababjees Bypass, Rajputana Hospital, Qasimabad, Hyderabad, Sindh.</p>
+<p>
+    <i class="fa-solid fa-envelope"></i> <strong>Inquiries:</strong> 
+    <a href="mailto:info@musculardystrophypk.org" style="color: #64748b; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#f59e0b'" onmouseout="this.style.color='#64748b'">
+        info@musculardystrophypk.org
+    </a>
+</p>
+
+            </div>
+            <div class="footer-col">
+                <h3>Quick Navigation</h3>
+                <a href="index.html">Home Base</a>
+                <a href="about.html">About us</a>
+                <a href="projects.html">our projrcts</a>
+                <a href="donation.html">Donations Panel</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Muscular Dystrophy Pakistan. All Rights Reserved.</p>
+        </div>
+                <div style="display: flex; gap: 15px; justify-content: center; margin-top: 50px; color: #888; font-size: 1.2rem;">
+            <a href="https://www.facebook.com/share/18mSGQ3L6U/" style="color:inherit;"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://www.instagram.com/musculardystrophypakistan" style="color:inherit;"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/ghulam-ali-9b2a74101" style="color:inherit;"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://x.com/muscular_p121" style="color:inherit;"><i class="fa-brands fa-twitter"></i></a>
+    </div>
+    </footer>
+
+    <script>
+        function toggleContrast() { document.body.classList.toggle('high-contrast'); }
+        function toggleTextSize() { document.body.classList.toggle('large-text'); }
+        
+        function openModal(title, subtext, barWidth, symptoms, diagnosis, treatment) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalSubtext').innerText = subtext;
+            document.getElementById('modalBar').style.width = barWidth;
+            document.getElementById('modalSymptoms').innerText = symptoms;
+            document.getElementById('modalDiagnosis').innerText = diagnosis;
+            document.getElementById('modalTreatment').innerText = treatment;
+            document.getElementById('detailsModal').style.display = 'flex';
+        }
+
+        function closeModal() { document.getElementById('detailsModal').style.display = 'none'; }
+
+        window.onclick = function(event) {
+            let modal = document.getElementById('detailsModal');
+            if (event.target == modal) { modal.style.display = 'none'; }
+        }
+        function setFrequency(type) {
+            let oneTimeBtn = document.getElementById('btn-one-time');
+            let monthlyBtn = document.getElementById('btn-monthly');
+            if(type === 'one-time') {
+                oneTimeBtn.style.background = 'var(--primary-blue)'; oneTimeBtn.style.color = 'white'; oneTimeBtn.style.border = '2px solid var(--primary-blue)';
+                monthlyBtn.style.background = 'white'; monthlyBtn.style.color = '#333'; monthlyBtn.style.border = '1px solid #ddd';
+            } else {
+                monthlyBtn.style.background = 'var(--primary-blue)'; monthlyBtn.style.color = 'white'; monthlyBtn.style.border = '2px solid var(--primary-blue)';
+                oneTimeBtn.style.background = 'white'; oneTimeBtn.style.color = '#333'; oneTimeBtn.style.border = '1px solid #ddd';
+            }
+        }
+
+        function setAmount(val) {
+            document.getElementById('donation-amount').value = val;
+            document.getElementById('total-display').innerText = val.toLocaleString();
+            
+            // Manage button active border styling
+            let btns = document.getElementsByClassName('amt-btn');
+            for(let btn of btns) {
+                if(btn.innerText.replace(/,/g, '') == val) {
+                    btn.style.border = '2px solid var(--primary-blue)';
+                    btn.style.background = 'var(--light-blue)';
+                    btn.style.color = 'var(--primary-dark)';
+                } else {
+                    btn.style.border = '1px solid #ddd';
+                    btn.style.background = 'white';
+                    btn.style.color = '#333';
+                }
+            }
+        }
+
+        function clearAmountFocus() {
+            let btns = document.getElementsByClassName('amt-btn');
+            for(let btn of btns) {
+                btn.style.border = '1px solid #ddd';
+                btn.style.background = 'white';
+                btn.style.color = '#333';
+            }
+            document.getElementById('donation-amount').focus();
+        }
+
+        // Live typing synchronization listener
+        document.getElementById('donation-amount').addEventListener('input', function(e) {
+            let currentVal = parseInt(e.target.value) || 0;
+            document.getElementById('total-display').innerText = currentVal.toLocaleString();
+        });
+        // 1. Side Drawer View Toggle Control
+        function toggleSideMenu() {
+            let drawer = document.getElementById('side-drawer');
+            let overlay = document.getElementById('menu-overlay');
+            
+            if(drawer.style.right === '0px') {
+                drawer.style.right = '-300px';
+                overlay.style.display = 'none';
+            } else {
+                drawer.style.right = '0px';
+                overlay.style.display = 'block';
+            }
+        }
+
+        // 2. Settings Submenu Inner Open/Close Mechanism
+        function toggleSettingsDropdown() {
+            let panel = document.getElementById('settings-panel');
+            let chevron = document.getElementById('settings-chevron');
+            
+            if(panel.style.display === 'none' || panel.style.display === '') {
+                panel.style.display = 'flex';
+                chevron.style.transform = 'rotate(180deg)';
+            } else {
+                panel.style.display = 'none';
+                chevron.style.transform = 'rotate(0deg)';
+            }
+        }
+
+    </script>
+    <script>
+    // Mobile Drawer Open/Close Logic
+    function toggleSideMenu() {
+        var drawer = document.getElementById('side-drawer');
+        var overlay = document.getElementById('menu-overlay');
+        
+        if (!drawer || !overlay) return; // Guard clause agar elements na milein
+
+        // Agar drawer pehle se open hai ya block hai
+        if (drawer.style.display === 'block' || drawer.style.right === '0px') {
+            drawer.style.right = '-300px';
+            overlay.style.opacity = '0';
+            setTimeout(function() {
+                drawer.style.display = 'none';
+                overlay.style.display = 'none';
+            }, 300); // transition khatam hone ka wait karega
+        } else {
+            // Menu kholne ke liye
+            drawer.style.display = 'block';
+            overlay.style.display = 'block';
+            // Chota sa delay taake CSS smooth slide effect show kare
+            setTimeout(function() {
+                drawer.style.right = '0px';
+                overlay.style.opacity = '1';
+            }, 10);
+        }
+    }
+
+    // Accessibility Dropdown Sub-menu Inside Drawer
+    function toggleSettingsDropdown() {
+        var panel = document.getElementById('settings-panel');
+        var chevron = document.getElementById('settings-chevron');
+        
+        if (!panel) return;
+
+        if (panel.style.display === 'none' || panel.style.display === '') {
+            panel.style.display = 'flex';
+            if (chevron) chevron.style.transform = 'rotate(180deg)';
+        } else {
+            panel.style.display = 'none';
+            if (chevron) chevron.style.transform = 'rotate(0deg)';
+        }
+    }
+</script>
+
+</body>
+</html>

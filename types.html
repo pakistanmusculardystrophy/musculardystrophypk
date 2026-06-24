@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Types of Muscular Dystrophy | MDP</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #f8fafc; color: #333333; line-height: 1.6; }
+        .container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+        header { background: #ffffff; box-shadow: 0 2px 10px rgba(0,0,0,0.05); padding: 15px 20px; position: sticky; top: 0; z-index: 1000; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; }
+        .logo-text { font-size: 16px; font-weight: bold; color: #004aad; text-decoration: none; }
+        
+        .types-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 30px; }
+        .type-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 10px rgba(0,0,0,0.01); transition: all 0.3s ease; cursor: pointer; }
+        .type-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,74,173,0.08); border-color: #004aad; }
+        .type-title { font-size: 17px; font-weight: 700; color: #004aad; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+        .click-badge { font-size: 12px; font-weight: bold; color: #004aad; margin-top: 15px; display: inline-flex; align-items: center; gap: 5px; }
+
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(4px); display: flex; justify-content: center; align-items: center; z-index: 2000; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
+        .modal-overlay.active { opacity: 1; visibility: visible; }
+        .modal-box { background: #ffffff; width: 90%; max-width: 700px; border-radius: 16px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); padding: 30px; position: relative; transform: scale(0.9); transition: all 0.3s ease; max-height: 85vh; overflow-y: auto; }
+        .modal-overlay.active .modal-box { transform: scale(1); }
+        .close-btn { position: absolute; top: 20px; right: 20px; background: #f1f5f9; border: none; width: 35px; height: 35px; border-radius: 50%; font-size: 16px; color: #64748b; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
+        .close-btn:hover { background: #e2e8f0; color: #0f172a; }
+        .modal-header { border-bottom: 2px solid #f1f5f9; padding-bottom: 15px; margin-bottom: 20px; }
+        .modal-header h2 { font-size: 22px; color: #004aad; font-weight: 800; display: flex; align-items: center; gap: 10px; }
+        .info-section { margin-bottom: 20px; }
+        .info-title { font-size: 15px; font-weight: 700; color: #475569; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
+        .info-desc { font-size: 14.5px; color: #444444; background: #f8fafc; padding: 12px; border-radius: 8px; border-left: 4px solid #004aad; }
+        .subtypes-container { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 5px; background: #f1f5f9; padding: 12px; border-radius: 8px; border-left: 4px solid #64748b; }
+        .subtype-tag { background: #ffffff; color: #334155; border: 1px solid #cbd5e1; padding: 4px 10px; border-radius: 6px; font-size: 13px; font-weight: 600; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <span class="logo-text">Muscular Dystrophy Pakistan (MDP)</span>
+            <a href="index.html" style="text-decoration: none; color: #64748b; font-size: 14px; font-weight: 600;"><i class="fa-solid fa-arrow-left"></i> Home</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <div style="text-align: center; margin-bottom: 20px;">
+            <h1 style="color: #004aad; font-size: 28px; font-weight: 800;">Main Types of Muscular Dystrophy</h1>
+            <p style="color: #555555; max-width: 650px; margin: 10px auto 0 auto;">Click on any main variant card below to pull up comprehensive details, known sub-types, and breakthroughs.</p>
+        </div>
+
+        <div class="types-grid">
+            <!-- 1. DMD -->
+            <div class="type-card" style="border-left: 5px solid #004aad;" onclick="openModal('dmd')">
+                <div>
+                    <div class="type-title"><i class="fa-solid fa-child"></i> Duchenne MD (DMD)</div>
+                    <p style="color: #555555; font-size: 14px;">Aggressive form affecting young boys due to complete lack of functional dystrophin protein.</p>
+                </div>
+                <div class="click-badge">Click for Details <i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+            </div>
+
+            <!-- 2. BMD -->
+            <div class="type-card" style="border-left: 5px solid #0d9488;" onclick="openModal('bmd')">
+                <div>
+                    <div class="type-title"><i class="fa-solid fa-person-walking"></i> Becker MD (BMD)</div>
+                    <p style="color: #555555; font-size: 14px;">Slower progression, adult-onset form with partially active shorter dystrophin sequences.</p>
+                </div>
+                <div class="click-badge" style="color: #0d9488;">Click for Details <i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+            </div>
+
+            <!-- 3. LGMD (Direct full page redirection, no popup) -->
+            <div class="type-card" style="border-left: 5px solid #ea580c;" onclick="window.location.href='lgmd.html'">
+                <div>
+                    <div class="type-title" style="color: #ea580c;"><i class="fa-solid fa-diagram-project"></i> Limb-Girdle MD (LGMD)</div>
+                    <p style="color: #555555; font-size: 14px;">Highly complex group of variable disorders affecting shoulder and pelvic girdle domains.</p>
+                </div>
+                <div class="click-badge" style="color: #ea580c;">Click for Full Page <i class="fa-solid fa-arrow-right"></i></div>
+            </div>
+
+            <!-- 4. FSHD -->
+            <div class="type-card" style="border-left: 5px solid #475569;" onclick="openModal('fshd')">
+                <div>
+                    <div class="type-title" style="color: #475569;"><i class="fa-solid fa-face-smile"></i> Facioscapulohumeral (FSHD)</div>
+                    <p style="color: #555555; font-size: 14px;">Predominantly causes progressive weakness in facial muscles, shoulder blades, and upper arms.</p>
+                </div>
+                <div class="click-badge" style="color: #475569;">Click for Details <i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+            </div>
+
+            <!-- 5. Myotonic -->
+            <div class="type-card" style="border-left: 5px solid #7c3aed;" onclick="openModal('myotonic')">
+                <div>
+                    <div class="type-title" style="color: #7c3aed;"><i class="fa-solid fa-hand-holding-hand"></i> Myotonic Dystrophy</div>
+                    <p style="color: #555555; font-size: 14px;">Characterized by the inability to relax muscles after contraction, often onsetting in adulthood.</p>
+                </div>
+                <div class="click-badge" style="color: #7c3aed;">Click for Details <i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+            </div>
+
+            <!-- 6. Congenital -->
+            <div class="type-card" style="border-left: 5px solid #db2777;" onclick="openModal('congenital')">
+                <div>
+                    <div class="type-title" style="color: #db2777;"><i class="fa-solid fa-baby"></i> Congenital MD (CMD)</div>
+                    <p style="color: #555555; font-size: 14px;">Apparent from birth or early infancy, causing muscle weakness with potential neurological updates.</p>
+                </div>
+                <div class="click-badge" style="color: #db2777;">Click for Details <i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+            </div>
+
+            <!-- 7. Distal -->
+            <div class="type-card" style="border-left: 5px solid #2563eb;" onclick="openModal('distal')">
+                <div>
+                    <div class="type-title" style="color: #2563eb;"><i class="fa-solid fa-socks"></i> Distal MD</div>
+                    <p style="color: #555555; font-size: 14px;">Affects the muscles furthest from the center of the body, such as hands, forearms, and lower legs.</p>
+                </div>
+                <div class="click-badge" style="color: #2563eb;">Click for Details <i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+            </div>
+
+            <!-- 8. OPMD -->
+            <div class="type-card" style="border-left: 5px solid #059669;" onclick="openModal('opmd')">
+                <div>
+                    <div class="type-title" style="color: #059669;"><i class="fa-solid fa-eye-low-vision"></i> Oculopharyngeal (OPMD)</div>
+                    <p style="color: #555555; font-size: 14px;">Onsets later in life (typically 40s-50s), targeting eyelids and throat muscles causing difficulty swallowing.</p>
+                </div>
+                <div class="click-badge" style="color: #059669;">Click for Details <i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+            </div>
+
+            <!-- 9. EDMD -->
+            <div class="type-card" style="border-left: 5px solid #dc2626;" onclick="openModal('edmd')">
+                <div>
+                    <div class="type-title" style="color: #dc2626;"><i class="fa-solid fa-heart-pulse"></i> Emery-Dreifuss (EDMD)</div>
+                    <p style="color: #555555; font-size: 14px;">Primarily presents early contractures and muscle wasting alongside significant cardiac conduction defects.</p>
+                </div>
+                <div class="click-badge" style="color: #dc2626;">Click for Details <i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+            </div>
+        </div>
+    </div>
+    <!-- DYNAMIC POPUP MODAL OVERLAY -->
+    <div class="modal-overlay" id="detailModal" onclick="closeModal(event)">
+        <div class="modal-box" onclick="event.stopPropagation()">
+            <button class="close-btn" onclick="closeModal(null)"><i class="fa-solid fa-xmark"></i></button>
+            <div class="modal-header">
+                <h2 id="modalTitle">Disease Name</h2>
+            </div>
+            
+            <div class="info-section">
+                <div class="info-title"><i class="fa-solid fa-network-wired" style="color: #64748b;"></i> Known Sub-Types & Classifications</div>
+                <div class="subtypes-container" id="modalSubtypes">
+                    <!-- Dynamic Subtype Tags go here -->
+                </div>
+            </div>
+
+            <div class="info-section">
+                <div class="info-title"><i class="fa-solid fa-microscope" style="color: #004aad;"></i> Specialized Diagnosis</div>
+                <p class="info-desc" id="modalDiag">Diagnosis data goes here.</p>
+            </div>
+
+            <div class="info-section">
+                <div class="info-title"><i class="fa-solid fa-hand-holding-medical" style="color: #475569;"></i> Standard Care Management</div>
+                <p class="info-desc" id="modalCare" style="border-left-color: #475569;">Care protocols go here.</p>
+            </div>
+
+            <div class="info-section">
+                <div class="info-title"><i class="fa-solid fa-atom" style="color: #ea580c;"></i> Latest Advanced World Treatments</div>
+                <p class="info-desc" id="modalAdvanced" style="border-left-color: #ea580c; background: #fffdfb;">Advanced therapeutic pipelines go here.</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        const diseaseData = {
+            dmd: {
+                title: "Duchenne Muscular Dystrophy (DMD)",
+                subtypes: ["Severe Classical DMD", "Out-of-Frame Mutations Variants"],
+                diag: "Symptoms usually start appearing in children between 2 to 5 years of age. Parents notice frequent falling, difficulty running, jumping, and climbing stairs. Medical tests like a simple blood test (CPK level) and a DNA genetic test are used to confirm it.",
+                care: "Daily stretching and physiotherapy help keep muscles flexible. Doctors prescribe special steroid medicines (like Prednisone) to keep muscles strong for a longer time. Regular heart and breathing checkups are also important.",
+                advanced: "New advanced gene therapies (like Elevidys) and exon-skipping medicines are now available in the world to help fix the missing protein in muscles and slow down the disease."
+            },
+            bmd: {
+                title: "Becker Muscular Dystrophy (BMD)",
+                subtypes: ["Mild In-Frame Deletion BMD", "Late-Onset Variants"],
+                diag: "This type is very similar to DMD but it is much milder and slower. Symptoms usually start later, during late childhood, teenage years, or even adulthood. Muscle weakness progresses slowly over many years.",
+                care: "Regular gentle exercise helps maintain muscle strength without damaging them. Doctors monitor heart health closely with medicine if needed. Lightweight leg braces or shoe inserts are used to help with walking.",
+                advanced: "Scientists around the world are working on new medicines (Myostatin inhibitors) that help protect and grow the remaining muscle tissues."
+            },
+            fshd: {
+                title: "Facioscapulohumeral Dystrophy (FSHD)",
+                subtypes: ["FSHD Type 1", "FSHD Type 2"],
+                diag: "This type mainly affects the face, shoulder blades, and upper arms. Weakness might cause difficulty smiling, closing eyes completely, or raising arms. It can start in teenage years or adulthood.",
+                care: "Special support braces help stabilize the ankles and feet. In some cases, a minor shoulder surgery (scapular fixation) is done to help the patient lift their arms better. Mild exercises help stay active.",
+                advanced: "A new drug called Losmapimod is in final advanced global testing stages to stop the toxic gene activity that causes this muscle damage."
+            },
+            myotonic: {
+                title: "Myotonic Dystrophy (Steinert's Disease)",
+                subtypes: ["DM1 (Adult/Juvenile/Congenital)", "DM2 (Proximal)"],
+                diag: "The main symptom is 'myotonia', which means muscles cannot relax quickly after use (for example, difficulty letting go after shaking someone's hand). It also affects the heart, eyes, and energy levels.",
+                care: "Special medicines are given to help muscles relax easier. Because it can cause irregular heartbeats, doctors frequently check the heart and may install a small pacemaker device to keep the heart safe.",
+                advanced: "Biotech companies are developing advanced RNA therapies designed to clean up and fix the genetic errors directly inside the muscle cells."
+            },
+            congenital: {
+                title: "Congenital Muscular Dystrophy (CMD)",
+                subtypes: ["LAMA2-CMD", "Ullrich Congenital", "Fukuyama CMD"],
+                diag: "Muscle weakness is present right from birth or within the first few months of life. Babies may seem weak or 'floppy,' and some types can also affect brain and eye development.",
+                care: "Early childhood support is key. This includes feeding tubes if swallowing is weak, lightweight leg braces, and non-invasive breathing machines (BiPAP) to help the baby sleep safely at night.",
+                advanced: "Global researchers are working on cell-repair therapies to fix the missing anchoring proteins that hold infant muscle cells together."
+            },
+            distal: {
+                title: "Distal Muscular Dystrophy",
+                subtypes: ["Miyoshi Myopathy", "Welander Distal Type", "Nonaka Type"],
+                diag: "Unlike other types, this begins in the muscles furthest from the center of the body—such as the hands, forearms, feet, and lower legs. It usually begins in adulthood and spreads very slowly.",
+                care: "Custom ankle braces (AFOs) are highly effective to prevent tripping and help with walking. Occupational therapy helps patients maintain their hand grip for writing, eating, and daily tasks.",
+                advanced: "Modern labs are testing special cell-membrane repair molecules to help stop the breakdown of peripheral arm and leg muscle fibers."
+            },
+            opmd: {
+                title: "Oculopharyngeal Muscular Dystrophy (OPMD)",
+                subtypes: ["Autosomal Dominant OPMD", "Autosomal Recessive OPMD"],
+                diag: "This type usually starts later in life, typically in a person's 40s or 50s. The earliest signs are drooping eyelids (ptosis) and difficulty swallowing food or liquids (dysphagia).",
+                care: "A simple eyelid surgery can lift drooping eyelids to fix vision. For swallowing issues, minor throat treatments or surgeries help widen the throat path to make eating safer and prevent choking.",
+                advanced: "Scientists are testing an advanced 'Silence and Replace' gene therapy technique that turns off the faulty gene while inserting a healthy copy."
+            },
+            edmd: {
+                title: "Emery-Dreifuss Muscular Dystrophy (EDMD)",
+                subtypes: ["X-Linked EDMD", "Autosomal EDMD (LMNA)"],
+                diag: "It causes early stiffness or locking of joints (contractures) in the elbows, neck, and heels, along with progressive arm and leg weakness. It also significantly impacts heart rhythms.",
+                care: "Protecting the heart is the number one priority. Doctors usually implant an ICD (heart defibrillator device) early on to prevent dangerous heart rhythms, combined with regular stretching.",
+                advanced: "New targeted small-molecule drugs are being researched to protect the structural walls of heart and muscle cells from breaking down."
+            }
+        };
+
+        function openModal(type) {
+            const data = diseaseData[type];
+            if (!data) return;
+
+            document.getElementById('modalTitle').innerText = data.title;
+            document.getElementById('modalDiag').innerText = data.diag;
+            document.getElementById('modalCare').innerText = data.care;
+            document.getElementById('modalAdvanced').innerText = data.advanced;
+
+            const subContainer = document.getElementById('modalSubtypes');
+            subContainer.innerHTML = ''; 
+            data.subtypes.forEach(name => {
+                const span = document.createElement('span');
+                span.className = 'subtype-tag';
+                span.innerText = name;
+                subContainer.appendChild(span);
+            });
+
+            document.getElementById('detailModal').classList.add('active');
+            document.body.style.overflow = 'hidden'; 
+        }
+
+        function closeModal(event) {
+            if (event) event.stopPropagation();
+            document.getElementById('detailModal').classList.remove('active');
+            document.body.style.overflow = ''; 
+        }
+    </script>
+</body>
+</html>
